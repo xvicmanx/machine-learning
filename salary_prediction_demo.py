@@ -1,6 +1,6 @@
-from models.salary_prediction.model import SalaryPredictionModel
+from models.salary_prediction.linear_regression_model import LinearRegressionSalaryPredictionModel
 
-model = SalaryPredictionModel()
+model = LinearRegressionSalaryPredictionModel()
 evaluation = model.train()
 
 print(evaluation)
@@ -8,7 +8,7 @@ print(evaluation)
 model.save()
 y_pred = model.predict([[1.4]])
 
-model2 = SalaryPredictionModel()
+model2 = LinearRegressionSalaryPredictionModel()
 model2.load()
 y_pred2 = model2.predict([[1.4]])
 
