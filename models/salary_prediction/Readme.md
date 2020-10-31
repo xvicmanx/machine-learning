@@ -15,6 +15,7 @@ For this simple problem tested with the following models:
   1. Linear regression model.
   2. Polynomial regression model.
   3. Decision tree regression model.
+  3. Random forest regression model.
 
 ## Results
 Each model was evaluated with the R2 score.
@@ -23,7 +24,8 @@ Each model was evaluated with the R2 score.
 | ------------------------------------------ | ------------- |
 | Linear regression model                    | 0.9749        |
 | Polynomial regression model (Degree 2)     | 0.9743        |
-| Decision tree regression model (Degree 2)  | 0.9100        |
+| Decision tree regression model             | 0.9100        |
+| Random forest regression model             | 0.9438        |
 
 ## Relevant files
 - base_model.py: Regresion model abstraction for the problem.
@@ -32,7 +34,9 @@ Each model was evaluated with the R2 score.
 
 - polynomial_regression_model.py: Polynomial regresion model implementation.
 
-- decision_tree_regression_model.py: Decision Tree regresion model implementation.
+- decision_tree_regression_model.py: Decision tree regresion model implementation.
+
+- random_forest_regression_model.py: Random froest regresion model implementation.
 
 - salary.csv: Dataset
 
