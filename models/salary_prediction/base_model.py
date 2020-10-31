@@ -6,7 +6,7 @@ from sklearn.metrics import r2_score
 import os.path
 import decamelize
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 dirname = os.path.dirname(__file__)
 persisted_models_dirname = 'persisted_models_data'
@@ -16,8 +16,13 @@ class BaseSalaryPredictionModel:
     __dataset_filename = 'salary.csv'
 
     def __init__(self):
-        # File to stored the serialized version of the model 
-        self.__model_filename = persisted_models_dirname + '/' + decamelize.convert(self.__class__.__name__) + "_serialized.sav"
+        # File to stored the serialized version of the model
+        self.model_name = self.__class__.__name__
+        
+        model_decamelized = decamelize.convert(self.model_name)
+
+        self.__model_filename = persisted_models_dirname + '/' + model_decamelized + "_serialized.sav"
+        self.__model_plot_filename = persisted_models_dirname + '/' + model_decamelized + "_plot.png"
 
     """Trains the model by reading the data from file, preprocessing and training the model
     """
@@ -41,6 +46,7 @@ class BaseSalaryPredictionModel:
     """
     def save(self):
         self._save_object(self.__model, self.__model_filename)
+        self.__plot()
 
     def _save_object(self, obj, filename):
         joblib.dump(obj, dirname + '/' + filename)
@@ -57,6 +63,12 @@ class BaseSalaryPredictionModel:
     def _preprocess_outputs(self, outputs):
         return outputs
 
+    def _transform_input_features(self, inputs):
+        return inputs
+    
+    def _transform_outputs(self, outputs):
+        return outputs
+
     def __read_and_process_data(self):
         dataset = pd.read_csv(dirname + '/' + self.__dataset_filename)
         inputs_train, inputs_test, outputs_train, outputs_test = train_test_split(
@@ -65,11 +77,34 @@ class BaseSalaryPredictionModel:
           test_size = 1/3,
           random_state = 0,
         )
-        self.__inputs_train = inputs_train
+        self.__inputs_train = self._transform_input_features(inputs_train)
+        self.__outputs_train = self._transform_outputs(outputs_train)
         self.__inputs_test = inputs_test
-        self.__outputs_train = outputs_train
         self.__outputs_test = outputs_test
 
     def __evaluate(self):
-      predictions = self.__model.predict(self.__inputs_test)
-      return { 'r2_score': str(r2_score(self.__outputs_test, predictions)) }
+      predictions = self.__model.predict(self._transform_input_features(self.__inputs_test))
+      return { 'r2_score': str(r2_score(self._transform_outputs(self.__outputs_test), predictions)) }
+
+    def __plot(self):
+        inputs_grid = np.arange(min(
+            self.__inputs_test),
+            max(self.__inputs_test),
+            0.01
+        )
+        inputs_grid = inputs_grid.reshape(len(inputs_grid), 1)
+        plt.scatter(
+            self.__inputs_test,
+            self.__outputs_test,
+            color = 'red'
+        )
+        plt.plot(
+            inputs_grid,
+            self.__model.predict(self._transform_input_features(inputs_grid)),
+            color = 'blue'
+        )
+        plt.title('Salary prediction (' + self.model_name + ')')
+        plt.xlabel('Years of experience')
+        plt.ylabel('Salary')
+        plt.savefig(dirname + '/' + self.__model_plot_filename)
+        plt.clf()

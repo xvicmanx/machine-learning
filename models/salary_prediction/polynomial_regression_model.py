@@ -11,7 +11,7 @@ class PolynomialRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionM
     def _get_model_instance(self):
         return LinearRegression()
 
-    def _preprocess_inputs(self, inputs):
+    def _transform_input_features(self, inputs):
         if self.__poly is None:
             self.__poly = PolynomialFeatures(degree = 2)
             return self.__poly.fit_transform(inputs)
