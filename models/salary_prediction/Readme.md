@@ -31,19 +31,19 @@ Each model was evaluated with the R2 score.
 
 1. Linear regression model plot on test set
 
-<img src="persisted_models_data/linear_regression_salary_prediction_model_plot.png " width="250">
+<img src="persisted_models_data/linear_regression_salary_prediction_model_plot.png " width="350">
 
 2. Polynomial regression model plot on test set
 
-<img src="persisted_models_data/polynomial_regression_salary_prediction_model_plot.png " width="250">
+<img src="persisted_models_data/polynomial_regression_salary_prediction_model_plot.png " width="350">
 
 3. Decision tree regression model plot on test set
 
-<img src="persisted_models_data/decision_tree_regression_salary_prediction_model_plot.png " width="250">
+<img src="persisted_models_data/decision_tree_regression_salary_prediction_model_plot.png " width="350">
 
 4. Random forest regression model plot on test set
 
-<img src="persisted_models_data/random_forest_regression_salary_prediction_model_plot.png " width="250">
+<img src="persisted_models_data/random_forest_regression_salary_prediction_model_plot.png " width="350">
 
 ## Relevant files
 - base_model.py: Regresion model abstraction for the problem.
