@@ -28,7 +28,6 @@ Each model was evaluated with the R2 score.
 | Random forest regression model             | 0.9438        |
 
 
-
 1. Linear regression model plot on test set
 
 <img src="persisted_models_data/linear_regression_salary_prediction_model_plot.png " width="350">
@@ -44,6 +43,9 @@ Each model was evaluated with the R2 score.
 4. Random forest regression model plot on test set
 
 <img src="persisted_models_data/random_forest_regression_salary_prediction_model_plot.png " width="350">
+
+
+From the R2 score results and also from the plots we can see that the linear regressor is the one that best fits the problem data.
 
 ## Relevant files
 - base_model.py: Regresion model abstraction for the problem.
