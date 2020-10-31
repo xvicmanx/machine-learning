@@ -5,7 +5,7 @@ import base_model
 
 class PolynomialRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionModel):
     def __init__(self):
-        super().__init__() 
+        super().__init__()
         self.__poly = None
 
     def _get_model_instance(self):
