@@ -18,10 +18,10 @@ For this simple problem tested with the following models:
 ## Results
 Each model was evaluated with the R2 score.
 
-| Model                        | R2 score      |
-| ---------------------------- | ------------- |
-| Linear regression model      | 0.9749        |
-| Polynomial regression model  | 0.9743        |
+| Model                                   | R2 score      |
+| --------------------------------------- | ------------- |
+| Linear regression model                 | 0.9749        |
+| Polynomial regression model (Degree 2)  | 0.9743        |
 
 ## Relevant files
 - base_model.py: Regresion model abstraction for the problem.
