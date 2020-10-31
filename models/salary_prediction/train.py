@@ -1,12 +1,23 @@
-from model import SalaryPredictionModel
+from linear_regression_model import LinearRegressionSalaryPredictionModel
+from polynomial_regression_model import PolynomialRegressionSalaryPredictionModel
 
-print('Training Salary Prediction Model: Start')
-model = SalaryPredictionModel()
-evaluation = model.train()
-print('Training Salary Prediction Model: End')
+print('Training salary prediction models: Start')
 
-print('\tTraining Evalutation Results')
-print('\tR2 Score = ' + evaluation['r2_score'])
+linear_model = LinearRegressionSalaryPredictionModel()
+poly_reg_model = PolynomialRegressionSalaryPredictionModel()
+evaluation = {
+  'Linear Model': linear_model.train(),
+  'Polynomial Model': poly_reg_model.train(),
+}
 
-print('Saving Model')
-model.save()
+print('Training salary prediction models: End')
+
+print('\tTraining evalutation results')
+
+for key in evaluation:
+    print('\t' + key + ' R2 Score = ' + evaluation[key]['r2_score'])
+
+print('\nSaving models')
+
+linear_model.save()
+poly_reg_model.save()

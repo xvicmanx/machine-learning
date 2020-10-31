@@ -1,10 +1,10 @@
 
 from sklearn.linear_model import LinearRegression
-from .base_model import BaseSalaryPredictionModel
+import base_model
 
-class LinearRegressionSalaryPredictionModel(BaseSalaryPredictionModel):
+class LinearRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionModel):
     def __init__(self):
-        super().__init__('linear_regression_salary_prediction_model_serialized.sav') 
+        super().__init__()
 
     def _get_model_instance(self):
         return LinearRegression()
