@@ -27,6 +27,19 @@ Each model was evaluated with the R2 score.
 | Decision tree regression model             | 0.9100        |
 | Random forest regression model             | 0.9438        |
 
+
+1. Linear regression model plot on test set
+![Linear regression model plot on test set](persisted_models_data/linear_regression_salary_prediction_model_plot.png)
+
+2. Polynomial regression model plot on test set
+![Polynomial regression model plot on test set](persisted_models_data/polynomial_regression_salary_prediction_model_plot.png)
+
+3. Decision tree regression model plot on test set
+![Decision tree regression model plot on test set](persisted_models_data/decision_tree_regression_salary_prediction_model_plot.png)
+
+4. Random forest regression model plot on test set
+![Random forest regression model plot on test set](persisted_models_data/random_forest_regression_salary_prediction_model_plot.png)
+
 ## Relevant files
 - base_model.py: Regresion model abstraction for the problem.
 
