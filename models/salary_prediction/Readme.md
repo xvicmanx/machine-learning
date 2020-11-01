@@ -46,7 +46,7 @@ Each model was evaluated with the R2 score.
 
 <img src="persisted_models_data/random_forest_regression_salary_prediction_model_plot.png " width="350">
 
-4. Support vector regression model plot on test set
+5. Support vector regression model plot on test set
 
 <img src="persisted_models_data/support_vector_regression_salary_prediction_model_plot.png " width="350">
 
@@ -54,15 +54,17 @@ Each model was evaluated with the R2 score.
 From the R2 score results and also from the plots we can see that the linear regressor is the one that best fits the problem data.
 
 ## Relevant files
-- base_model.py: Regresion model abstraction for the problem.
+- base_model.py: Regression model abstraction for the problem.
 
-- linear_regression_model.py: Linear regresion model implementation.
+- linear_regression_model.py: Linear regression model implementation.
 
-- polynomial_regression_model.py: Polynomial regresion model implementation.
+- polynomial_regression_model.py: Polynomial regression model implementation.
 
-- decision_tree_regression_model.py: Decision tree regresion model implementation.
+- decision_tree_regression_model.py: Decision tree regression model implementation.
 
-- random_forest_regression_model.py: Random froest regresion model implementation.
+- random_forest_regression_model.py: Random forest regression model implementation.
+
+- support_vector_regression_model.py: Support vector regression model implementation.
 
 - salary.csv: Dataset
 
