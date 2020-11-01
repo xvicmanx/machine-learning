@@ -35,7 +35,8 @@ class BaseSalaryPredictionModel:
     """Predicts the value of the list of given values
     """
     def predict(self, items):
-        return self.__model.predict(self._preprocess_inputs(items))
+        inputs = self._transform_input_features(self._preprocess_inputs(items))
+        return self._inverse_transform_outputs(self.__model.predict(inputs))
 
     """Loads the serialized model
     """
@@ -69,6 +70,9 @@ class BaseSalaryPredictionModel:
     def _transform_outputs(self, outputs):
         return outputs
 
+    def _inverse_transform_outputs(self, transformed_outputs):
+        return transformed_outputs
+
     def __read_and_process_data(self):
         dataset = pd.read_csv(dirname + '/' + self.__dataset_filename)
         inputs_train, inputs_test, outputs_train, outputs_test = train_test_split(
@@ -98,9 +102,10 @@ class BaseSalaryPredictionModel:
             self.__outputs_test,
             color = 'red'
         )
+        predictions = self._inverse_transform_outputs(self.__model.predict(self._transform_input_features(inputs_grid)))
         plt.plot(
             inputs_grid,
-            self.__model.predict(self._transform_input_features(inputs_grid)),
+            predictions,
             color = 'blue'
         )
         plt.title('Salary prediction (' + self.model_name + ')')

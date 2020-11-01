@@ -15,7 +15,8 @@ For this simple problem tested with the following models:
   1. Linear regression model.
   2. Polynomial regression model.
   3. Decision tree regression model.
-  3. Random forest regression model.
+  4. Random forest regression model.
+  5. Support vector regression model.
 
 ## Results
 Each model was evaluated with the R2 score.
@@ -26,6 +27,7 @@ Each model was evaluated with the R2 score.
 | Polynomial regression model (Degree 2)     | 0.9743        |
 | Decision tree regression model             | 0.9100        |
 | Random forest regression model             | 0.9438        |
+| Support vector regression model (RBF)           | 0.9248        |
 
 
 1. Linear regression model plot on test set
@@ -43,6 +45,10 @@ Each model was evaluated with the R2 score.
 4. Random forest regression model plot on test set
 
 <img src="persisted_models_data/random_forest_regression_salary_prediction_model_plot.png " width="350">
+
+4. Support vector regression model plot on test set
+
+<img src="persisted_models_data/support_vector_regression_salary_prediction_model_plot.png " width="350">
 
 
 From the R2 score results and also from the plots we can see that the linear regressor is the one that best fits the problem data.
