@@ -8,6 +8,7 @@ package machine_learning;
 
 service MachineLearning {
   rpc PredictSalary(PredictSalaryRequest) returns (PredictSalaryResponse) {}
+  rpc PredictPurchase(PredictPurchaseRequest) returns (PredictPurchaseResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -16,4 +17,13 @@ message PredictSalaryRequest {
 
 message PredictSalaryResponse {
   float salary = 1;
+}
+
+message PredictPurchaseRequest {
+  int32 age = 1;
+  float salary = 2;
+}
+
+message PredictPurchaseResponse {
+  bool purchase = 1;
 }

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\030io.grpc.machine_learningB\017MachineLearningP\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rservice.proto\x12\x10machine_learning\"%\n\x14PredictSalaryRequest\x12\r\n\x05years\x18\x01 \x01(\x05\"\'\n\x15PredictSalaryResponse\x12\x0e\n\x06salary\x18\x01 \x01(\x02\x32u\n\x0fMachineLearning\x12\x62\n\rPredictSalary\x12&.machine_learning.PredictSalaryRequest\x1a\'.machine_learning.PredictSalaryResponse\"\x00\x42-\n\x18io.grpc.machine_learningB\x0fMachineLearningP\x01\x62\x06proto3'
+  serialized_pb=b'\n\rservice.proto\x12\x10machine_learning\"%\n\x14PredictSalaryRequest\x12\r\n\x05years\x18\x01 \x01(\x05\"\'\n\x15PredictSalaryResponse\x12\x0e\n\x06salary\x18\x01 \x01(\x02\"5\n\x16PredictPurchaseRequest\x12\x0b\n\x03\x61ge\x18\x01 \x01(\x05\x12\x0e\n\x06salary\x18\x02 \x01(\x02\"+\n\x17PredictPurchaseResponse\x12\x10\n\x08purchase\x18\x01 \x01(\x08\x32\xdf\x01\n\x0fMachineLearning\x12\x62\n\rPredictSalary\x12&.machine_learning.PredictSalaryRequest\x1a\'.machine_learning.PredictSalaryResponse\"\x00\x12h\n\x0fPredictPurchase\x12(.machine_learning.PredictPurchaseRequest\x1a).machine_learning.PredictPurchaseResponse\"\x00\x42-\n\x18io.grpc.machine_learningB\x0fMachineLearningP\x01\x62\x06proto3'
 )
 
 
@@ -88,8 +88,81 @@ _PREDICTSALARYRESPONSE = _descriptor.Descriptor(
   serialized_end=113,
 )
 
+
+_PREDICTPURCHASEREQUEST = _descriptor.Descriptor(
+  name='PredictPurchaseRequest',
+  full_name='machine_learning.PredictPurchaseRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='age', full_name='machine_learning.PredictPurchaseRequest.age', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='salary', full_name='machine_learning.PredictPurchaseRequest.salary', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=115,
+  serialized_end=168,
+)
+
+
+_PREDICTPURCHASERESPONSE = _descriptor.Descriptor(
+  name='PredictPurchaseResponse',
+  full_name='machine_learning.PredictPurchaseResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='purchase', full_name='machine_learning.PredictPurchaseResponse.purchase', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=170,
+  serialized_end=213,
+)
+
 DESCRIPTOR.message_types_by_name['PredictSalaryRequest'] = _PREDICTSALARYREQUEST
 DESCRIPTOR.message_types_by_name['PredictSalaryResponse'] = _PREDICTSALARYRESPONSE
+DESCRIPTOR.message_types_by_name['PredictPurchaseRequest'] = _PREDICTPURCHASEREQUEST
+DESCRIPTOR.message_types_by_name['PredictPurchaseResponse'] = _PREDICTPURCHASERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PredictSalaryRequest = _reflection.GeneratedProtocolMessageType('PredictSalaryRequest', (_message.Message,), {
@@ -106,6 +179,20 @@ PredictSalaryResponse = _reflection.GeneratedProtocolMessageType('PredictSalaryR
   })
 _sym_db.RegisterMessage(PredictSalaryResponse)
 
+PredictPurchaseRequest = _reflection.GeneratedProtocolMessageType('PredictPurchaseRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PREDICTPURCHASEREQUEST,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:machine_learning.PredictPurchaseRequest)
+  })
+_sym_db.RegisterMessage(PredictPurchaseRequest)
+
+PredictPurchaseResponse = _reflection.GeneratedProtocolMessageType('PredictPurchaseResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PREDICTPURCHASERESPONSE,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:machine_learning.PredictPurchaseResponse)
+  })
+_sym_db.RegisterMessage(PredictPurchaseResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -116,8 +203,8 @@ _MACHINELEARNING = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=115,
-  serialized_end=232,
+  serialized_start=216,
+  serialized_end=439,
   methods=[
   _descriptor.MethodDescriptor(
     name='PredictSalary',
@@ -126,6 +213,16 @@ _MACHINELEARNING = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_PREDICTSALARYREQUEST,
     output_type=_PREDICTSALARYRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PredictPurchase',
+    full_name='machine_learning.MachineLearning.PredictPurchase',
+    index=1,
+    containing_service=None,
+    input_type=_PREDICTPURCHASEREQUEST,
+    output_type=_PREDICTPURCHASERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
