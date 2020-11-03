@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 from k_nearest_neighbor_classification_model import KNearestNeighborSocialNetworkAdsPredictionModel
 
 
@@ -12,12 +14,17 @@ evaluation = {
 print('Training social network ads prediction models: End')
 
 print('\tTraining evaluation results')
+
+headers = ['Model', 'Accuracy', 'Confusion matrix']
+rows = []
+
 for key in evaluation:
-    print('\t' + key + ':')
-    print('\t\t' + ' Accuracy score = ' + str(evaluation[key]['accuracy_score']))
-    print('\t\t' + ' Confusion Matrix:')
-    print('\t\t\t' + str(evaluation[key]['confusion_matrix']))
-    print('\n')
+    rows.append([key, evaluation[key]['accuracy_score'], str(evaluation[key]['confusion_matrix'])])
+
+print(tabulate(
+    rows,
+    headers=headers
+))
 
 print('\nSalary prediction (K Nearest Neighbors Model) ' + str(k_neighbors_model.predict([[32,18000]])))
 

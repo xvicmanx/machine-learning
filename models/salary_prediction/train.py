@@ -27,6 +27,17 @@ print('\tTraining evalutation results')
 for key in evaluation:
     print('\t' + key + ' R2 Score = ' + evaluation[key]['r2_score'])
 
+# headers = ['Model', 'Accuracy', 'Confusion matrix']
+# rows = []
+
+# for key in evaluation:
+#     rows.append([key, evaluation[key]['accuracy_score'], str(evaluation[key]['confusion_matrix'])])
+
+# print(tabulate(
+#     rows,
+#     headers=headers
+# ))
+
 print('\nSalary prediction (Linear model) for' + ' 1.4 years = ' + str(linear_model.predict([[1.4]])))
 print('Salary prediction (Polynomial model) for' + ' 1.4 years = ' + str(poly_reg_model.predict([[1.4]])))
 print('Salary prediction (Decision tree model) for' + ' 1.4 years = ' + str(decision_tree_model.predict([[1.4]])))
