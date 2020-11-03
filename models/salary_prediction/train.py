@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 from linear_regression_model import LinearRegressionSalaryPredictionModel
 from polynomial_regression_model import PolynomialRegressionSalaryPredictionModel
 from decision_tree_regression_model import DecisionTreeRegressionSalaryPredictionModel
@@ -20,29 +22,40 @@ evaluation = {
   'Support Vector Regression Model': svr_model.train(),
 }
 
-print('Training salary prediction models: End')
+print('Training salary prediction models: End\n')
 
 print('\tTraining evalutation results')
 
+headers = ['Model', 'R2 score']
+rows = []
+
 for key in evaluation:
-    print('\t' + key + ' R2 Score = ' + evaluation[key]['r2_score'])
+    rows.append([key, evaluation[key]['r2_score']])
 
-# headers = ['Model', 'Accuracy', 'Confusion matrix']
-# rows = []
+print(tabulate(
+    rows,
+    headers=headers,
+))
 
-# for key in evaluation:
-#     rows.append([key, evaluation[key]['accuracy_score'], str(evaluation[key]['confusion_matrix'])])
+models = [
+  ['Linear model', linear_model],
+  ['Polynomial model', poly_reg_model],
+  ['Decision tree model', decision_tree_model],
+  ['Random forest model', random_forest_model],
+  ['SVR model', svr_model],
+]
+prediction_headers = ['Model', 'Result']
+prediciton_rows = []
 
-# print(tabulate(
-#     rows,
-#     headers=headers
-# ))
+print('\n\tSalary Prediction')
+for item in models:
+    result = item[1].predict([[1.4]])
+    prediciton_rows.append([item[0], result])
 
-print('\nSalary prediction (Linear model) for' + ' 1.4 years = ' + str(linear_model.predict([[1.4]])))
-print('Salary prediction (Polynomial model) for' + ' 1.4 years = ' + str(poly_reg_model.predict([[1.4]])))
-print('Salary prediction (Decision tree model) for' + ' 1.4 years = ' + str(decision_tree_model.predict([[1.4]])))
-print('Salary prediction (Random forest model) for' + ' 1.4 years = ' + str(random_forest_model.predict([[1.4]])))
-print('Salary prediction (SVR model) for' + ' 1.4 years = ' + str(svr_model.predict([[1.4]])))
+print(tabulate(
+    prediciton_rows,
+    headers=prediction_headers,
+))
 
 print('\nSaving models')
 
