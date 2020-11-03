@@ -1,7 +1,7 @@
 
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
-import base_model
+import salary_prediction_base_model as base_model
 
 class PolynomialRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionModel):
     def __init__(self):

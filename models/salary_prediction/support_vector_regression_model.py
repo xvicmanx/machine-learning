@@ -1,7 +1,7 @@
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
-import base_model
+import salary_prediction_base_model as base_model
 
 class SupportVectorRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionModel):
     __inputs_scaler_filename = 'support_vector_regression_inputs_scaler.sav'

@@ -1,6 +1,6 @@
 
 from sklearn.tree import DecisionTreeRegressor
-import base_model
+import salary_prediction_base_model as base_model
 
 class DecisionTreeRegressionSalaryPredictionModel(base_model.BaseSalaryPredictionModel):
     def __init__(self):
