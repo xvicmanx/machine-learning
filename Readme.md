@@ -7,7 +7,27 @@ The purpose of these repository is to solve some machine learning problems for a
 
 ## GRPC service
 
-### Machine Learning Service
+### Compiling
+Move to `grpc_service` directory and run:
+```sh
+python -m grpc_tools.protoc -I .  --python_out=. --grpc_python_out=. ./service.proto
+```
+
+### Starting server
+
+Run the following command:
+```sh
+python start_server.py
+```
+
+### Run client demo
+
+Run the following command:
+```sh
+python grpc_client.py
+```
+
+### Machine Learning Service API
 Service that makes predictions using machine learning models.
 
 | Method Name | Request Type | Response Type | Description |
@@ -59,24 +79,3 @@ Predict Purchase Response
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | purchase | bool | | If the customer will purchase or not |
-
-
-### Compiling
-Move to `grpc_service` directory and run:
-```sh
-python -m grpc_tools.protoc -I .  --python_out=. --grpc_python_out=. ./service.proto
-```
-
-### Starting server
-
-Run the following command:
-```sh
-python start_server.py
-```
-
-### Run client demo
-
-Run the following command:
-```sh
-python grpc_client.py
-```
