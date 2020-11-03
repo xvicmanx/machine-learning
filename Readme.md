@@ -38,8 +38,7 @@ Service that makes predictions using machine learning models.
 
 <a name="PredictSalaryRequest"></a>
 
-### PredictSalaryRequest
-Predict Salary Request
+#### Predict Salary Request
 
 
 | Field | Type | Label | Description |
@@ -49,8 +48,7 @@ Predict Salary Request
 
 <a name="PredictSalaryResponse"></a>
 
-### PredictSalaryResponse
-Predict Salary Response
+#### Predict Salary Response
 
 
 | Field | Type | Label | Description |
@@ -60,8 +58,7 @@ Predict Salary Response
 
 <a name="PredictSalaryRequest"></a>
 
-### PredictPurchaseRequest
-Predict Purchase Request
+#### Predict Purchase Request
 
 
 | Field | Type | Label | Description |
@@ -72,8 +69,7 @@ Predict Purchase Request
 
 <a name="PredictPurchaseResponse"></a>
 
-### PredictPurchaseResponse
-Predict Purchase Response
+#### Predict Purchase Response
 
 
 | Field | Type | Label | Description |
