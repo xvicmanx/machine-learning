@@ -4,7 +4,7 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 # Appending parent dir
 sys.path.append(os.path.dirname(currentdir))
 
-from classification_helpers import  train_and_evaluate, tabulate_predictions, tabulate_models_evaluation
+from helpers import  train_and_evaluate, display_predictions, display_classification_evaluation
 
 from k_nearest_neighbor_classification_model import KNearestNeighborSocialNetworkAdsPredictionModel
 from decision_tree_classification_model import DecisionTreeSocialNetworkAdsPredictionModel
@@ -24,8 +24,8 @@ evaluation = train_and_evaluate(models)
 
 print(title + ': End')
 
-tabulate_models_evaluation(evaluation)
-tabulate_predictions(models, [[32, 18000]])
+display_classification_evaluation(evaluation)
+display_predictions(models, [[32, 18000]])
 
 print('\nSaving models')
 

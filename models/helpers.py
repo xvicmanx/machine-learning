@@ -1,6 +1,6 @@
 from tabulate import tabulate
 
-def tabulate_predictions(models, samples):
+def display_predictions(models, samples):
     print('\tPredictions')
     prediction_headers = ['Model', 'Prediction']
     prediction_rows = []
@@ -14,7 +14,7 @@ def tabulate_predictions(models, samples):
         headers=prediction_headers
     ))
 
-def tabulate_models_evaluation(evaluation):
+def display_classification_evaluation(evaluation):
     print('\tTraining evaluation results')
 
     headers = ['Model', 'Accuracy', 'Confusion matrix']
@@ -22,6 +22,20 @@ def tabulate_models_evaluation(evaluation):
 
     for key in evaluation:
         rows.append([key, evaluation[key]['accuracy_score'], str(evaluation[key]['confusion_matrix'])])
+
+    print(tabulate(
+        rows,
+        headers=headers
+    ))
+
+def display_regression_evaluation(evaluation):
+    print('\tTraining evaluation results')
+
+    headers = ['Model', 'R2 score']
+    rows = []
+
+    for key in evaluation:
+        rows.append([key, evaluation[key]['r2_score']])
 
     print(tabulate(
         rows,
