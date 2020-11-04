@@ -12,3 +12,4 @@ class KNearestNeighborSocialNetworkAdsPredictionModel(bm.SocialNetworkAdsPredict
             metric = 'minkowski',
             p = 2,
         )
+        
