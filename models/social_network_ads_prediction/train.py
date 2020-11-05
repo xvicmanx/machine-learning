@@ -18,10 +18,10 @@ title = 'Training social network ads prediction models'
 print(title + ': Start')
 
 models = {
-    # 'K Nearest Neighbors Model': KNearestNeighborSocialNetworkAdsPredictionModel(),
-    # 'Decision Tree Model': DecisionTreeSocialNetworkAdsPredictionModel(),
-    # 'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
-    # 'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
+    'K Nearest Neighbors Model': KNearestNeighborSocialNetworkAdsPredictionModel(),
+    'Decision Tree Model': DecisionTreeSocialNetworkAdsPredictionModel(),
+    'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
+    'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
     'SVM Model': SupportVectorMachinesSocialNetworkAdsPredictionModel(),
 }
 
