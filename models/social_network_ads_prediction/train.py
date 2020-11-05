@@ -11,6 +11,7 @@ from decision_tree_classification_model import DecisionTreeSocialNetworkAdsPredi
 from naive_bayes_classification_model import NaiveBayesSocialNetworkAdsPredictionModel
 from logistic_regression_classification_model import LogisticRegressionSocialNetworkAdsPredictionModel
 from svm_classification_model import SupportVectorMachinesSocialNetworkAdsPredictionModel
+from random_forest_classification_model import RandomForestSocialNetworkAdsPredictionModel
 
 
 title = 'Training social network ads prediction models'
@@ -23,6 +24,7 @@ models = {
     'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
     'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
     'SVM Model': SupportVectorMachinesSocialNetworkAdsPredictionModel(),
+    'Random Forest Model': RandomForestSocialNetworkAdsPredictionModel(),
 }
 
 evaluation = train_and_evaluate(models)
