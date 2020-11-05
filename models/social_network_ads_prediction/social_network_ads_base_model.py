@@ -113,12 +113,12 @@ class SocialNetworkAdsPredictionModel:
             np.arange(
                 start = self.__inputs_test[:, 0].min() - 10,
                 stop = self.__inputs_test[:, 0].max() + 10,
-                step = 2.5
+                step = 0.25
             ),
             np.arange(
                 start = self.__inputs_test[:, 1].min() - 1000,
                 stop = self.__inputs_test[:, 1].max() + 1000,
-                step = 2.5
+                step = 0.25
             )
         )
 

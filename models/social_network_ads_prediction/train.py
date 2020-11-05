@@ -9,6 +9,7 @@ from helpers import  train_and_evaluate, display_predictions, display_classifica
 from k_nearest_neighbor_classification_model import KNearestNeighborSocialNetworkAdsPredictionModel
 from decision_tree_classification_model import DecisionTreeSocialNetworkAdsPredictionModel
 from naive_bayes_classification_model import NaiveBayesSocialNetworkAdsPredictionModel
+from logistic_regression_classification_model import LogisticRegressionSocialNetworkAdsPredictionModel
 
 title = 'Training social network ads prediction models'
 
@@ -18,6 +19,7 @@ models = {
     'K Nearest Neighbors Model': KNearestNeighborSocialNetworkAdsPredictionModel(),
     'Decision Tree Model': DecisionTreeSocialNetworkAdsPredictionModel(),
     'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
+    'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
 }
 
 evaluation = train_and_evaluate(models)
