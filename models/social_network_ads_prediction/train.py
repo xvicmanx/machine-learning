@@ -10,16 +10,19 @@ from k_nearest_neighbor_classification_model import KNearestNeighborSocialNetwor
 from decision_tree_classification_model import DecisionTreeSocialNetworkAdsPredictionModel
 from naive_bayes_classification_model import NaiveBayesSocialNetworkAdsPredictionModel
 from logistic_regression_classification_model import LogisticRegressionSocialNetworkAdsPredictionModel
+from svm_classification_model import SupportVectorMachinesSocialNetworkAdsPredictionModel
+
 
 title = 'Training social network ads prediction models'
 
 print(title + ': Start')
 
 models = {
-    'K Nearest Neighbors Model': KNearestNeighborSocialNetworkAdsPredictionModel(),
-    'Decision Tree Model': DecisionTreeSocialNetworkAdsPredictionModel(),
-    'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
-    'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
+    # 'K Nearest Neighbors Model': KNearestNeighborSocialNetworkAdsPredictionModel(),
+    # 'Decision Tree Model': DecisionTreeSocialNetworkAdsPredictionModel(),
+    # 'Naive Bayes Model': NaiveBayesSocialNetworkAdsPredictionModel(),
+    # 'Logistic Regression Model': LogisticRegressionSocialNetworkAdsPredictionModel(),
+    'SVM Model': SupportVectorMachinesSocialNetworkAdsPredictionModel(),
 }
 
 evaluation = train_and_evaluate(models)
