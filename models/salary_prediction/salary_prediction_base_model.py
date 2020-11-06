@@ -9,11 +9,11 @@ import decamelize
 import matplotlib.pyplot as plt
 
 dirname = os.path.dirname(__file__)
-persisted_models_dirname = 'persisted_models_data'
 
 class BaseSalaryPredictionModel:
     # File of the dataset used to train the model
     __dataset_filename = 'salary.csv'
+    _persisted_models_dirname = 'persisted_models_data'
 
     def __init__(self):
         # File to stored the serialized version of the model
@@ -21,8 +21,8 @@ class BaseSalaryPredictionModel:
         
         model_decamelized = decamelize.convert(self.model_name)
 
-        self.__model_filename = persisted_models_dirname + '/' + model_decamelized + "_serialized.sav"
-        self.__model_plot_filename = persisted_models_dirname + '/' + model_decamelized + "_plot.png"
+        self.__model_filename = self._persisted_models_dirname + '/' + model_decamelized + "_serialized.sav"
+        self.__model_plot_filename = self._persisted_models_dirname + '/' + model_decamelized + "_plot.png"
 
     """Trains the model by reading the data from file, preprocessing and training the model
     """

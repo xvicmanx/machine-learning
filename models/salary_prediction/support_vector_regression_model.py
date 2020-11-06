@@ -14,13 +14,19 @@ class SupportVectorRegressionSalaryPredictionModel(base_model.BaseSalaryPredicti
 
     def save(self):
         super().save()
-        self._save_object(self.__inputs_scaler, self.__inputs_scaler_filename)
-        self._save_object(self.__outputs_scaler, self.__outputs_scaler_filename)
+        self._save_object(
+            self.__inputs_scaler,
+            self._persisted_models_dirname + '/' + self.__inputs_scaler_filename,
+        )
+        self._save_object(
+            self.__outputs_scaler,
+            self._persisted_models_dirname + '/' + self.__outputs_scaler_filename,
+        )
 
     def load(self):
         super().load()
-        self.__inputs_scaler = self._load_object(self.__inputs_scaler_filename)
-        self.__outputs_scaler = self._load_object(self.__outputs_scaler_filename)
+        self.__inputs_scaler = self._load_object(self._persisted_models_dirname + '/' + self.__inputs_scaler_filename)
+        self.__outputs_scaler = self._load_object(self._persisted_models_dirname + '/' + self.__outputs_scaler_filename)
 
     def _get_model_instance(self):
         # Kernel: Gaussian Radial Basis Function
