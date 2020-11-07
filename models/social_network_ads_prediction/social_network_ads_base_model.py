@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import confusion_matrix, accuracy_score, fbeta_score
 from sklearn.preprocessing import StandardScaler
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
@@ -105,6 +105,21 @@ class SocialNetworkAdsPredictionModel:
             'confusion_matrix': confusion_matrix(
                 self._transform_outputs(self.__outputs_test),
                 predictions,
+            ),
+            'f0.5_score': fbeta_score(
+                self._transform_outputs(self.__outputs_test),
+                predictions,
+                beta = 0.5,
+            ),
+            'f1_score': fbeta_score(
+                self._transform_outputs(self.__outputs_test),
+                predictions,
+                beta = 1.0,
+            ),
+            'f2_score': fbeta_score(
+                self._transform_outputs(self.__outputs_test),
+                predictions,
+                beta = 2.0,
             ),
         }
 

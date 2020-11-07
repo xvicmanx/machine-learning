@@ -22,14 +22,14 @@ For this simple problem tested with the following models:
 ## Results
 Each model was evaluated based on the accuracy score, and confusion matrix.
 
-| Model                                | Accuracy |
-| -------------------------------------| ---------|
-| Logistic Regression model            | 0.89     |
-| K Nearest Neighbor                   | 0.93     |
-| Decision tree classification model   | 0.91     |
-| Random forest classification model   | 0.91     |
-| Support vector machines model (RBF)  | 0.93     |
-| Naive Bayes model                    | 0.90     |
+| Model                                | Accuracy | F0.5 Score | F1 Score | F2 Score |
+| -------------------------------------| ---------|------------|----------|----------|
+| Logistic Regression model            | 0.89     | 0.86       | 0.81     | 0.77     |
+| K Nearest Neighbor                   | 0.93     | 0.88       | 0.89     | 0.90     |
+| Decision tree classification model   | 0.91     | 0.84       | 0.87     | 0.89     |
+| Random forest classification model   | 0.91     | 0.84       | 0.86     | 0.89     |
+| Support vector machines model (RBF)  | 0.93     | 0.88       | 0.89     | 0.90     |
+| Naive Bayes model                    | 0.90     | 0.84       | 0.87     | 0.89     |
 
 
 
@@ -95,6 +95,11 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 1 ]   | 3         | 29      |
 
 <img src="persisted_models_data/k_nearest_neighbor_social_network_ads_prediction_model_plot.png " width="350">
+
+Based on the metrics of accuracy, f0.5, f1, and f2 scores, the winning models are SVM and K Nearest Neighbors with a tie: 0.93, 0,88, 0.89, 0.90.
+
+These models beat the others.
+
 
 ## Relevant files
 - social_network_ads_base_model.py: Classification model abstraction for the problem.

@@ -17,11 +17,18 @@ def display_predictions(models, samples):
 def display_classification_evaluation(evaluation):
     print('\tTraining evaluation results')
 
-    headers = ['Model', 'Accuracy', 'Confusion matrix']
+    headers = ['Model', 'Accuracy', 'F0.5 score', 'F1 score', 'F2 score', 'Confusion matrix']
     rows = []
 
     for key in evaluation:
-        rows.append([key, evaluation[key]['accuracy_score'], str(evaluation[key]['confusion_matrix'])])
+        rows.append([
+            key,
+            evaluation[key]['accuracy_score'],
+            evaluation[key]['f0.5_score'],
+            evaluation[key]['f1_score'],
+            evaluation[key]['f2_score'],
+            str(evaluation[key]['confusion_matrix']),
+        ])
 
     print(tabulate(
         rows,
