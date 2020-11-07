@@ -24,12 +24,12 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 
 | Model                                | Accuracy |
 | -------------------------------------| ---------|
-| Logistic Regression model            | 0.89   |
-| K Nearest Neighbor                   | 0.93   |
-| Decision tree classification model   | 0.91   |
-| Random forest classification model   | 0.91   |
-| Support vector machines model (RBF)  | 0.93   |
-| Naive Bayes model                    | 0.90  |
+| Logistic Regression model            | 0.89     |
+| K Nearest Neighbor                   | 0.93     |
+| Decision tree classification model   | 0.91     |
+| Random forest classification model   | 0.91     |
+| Support vector machines model (RBF)  | 0.93     |
+| Naive Bayes model                    | 0.90     |
 
 
 1. Logistic Regression model plot on test set
@@ -55,6 +55,61 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 6. Support vector machines classification model plot on test set
 
 <img src="persisted_models_data/naive_bayes_social_network_ads_prediction_model_plot.png " width="350">
+
+### Confusion matrices
+
+
+#### Logistic Regression model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 65        |   3     |
+| [ 1 ]   | 8         | 24      |
+
+
+#### Decision Tree model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 62        |   6     |
+| [ 1 ]   | 3         | 29      |
+
+#### Naive Bayes model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 65        |   3     |
+| [ 1 ]   | 7         | 25      |
+
+
+#### SVM model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 64        |   4     |
+| [ 1 ]   | 3         | 29      |
+
+
+#### Random Forest model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 62        |   6     |
+| [ 1 ]   | 3         | 29      |
+
+
+#### K Nearest Neighbor model
+
+|         | Predicted |    |
+| --------| ----------|----|
+| Actual  | [ 0 ]     | [ 1  ]  |
+| [ 0 ]   | 64        |   4     |
+| [ 1 ]   | 3         | 29      |
 
 
 ## Relevant files
