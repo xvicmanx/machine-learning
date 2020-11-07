@@ -32,31 +32,8 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | Naive Bayes model                    | 0.90     |
 
 
-1. Logistic Regression model plot on test set
 
-<img src="persisted_models_data/logistic_regression_social_network_ads_prediction_model_plot.png " width="350">
-
-2. K Nearest Neighbor model plot on test set
-
-<img src="persisted_models_data/k_nearest_neighbor_social_network_ads_prediction_model_plot.png " width="350">
-
-3. Decision tree classification model plot on test set
-
-<img src="persisted_models_data/decision_tree_social_network_ads_prediction_model_plot.png " width="350">
-
-4. Random forest classification model plot on test set
-
-<img src="persisted_models_data/random_forest_social_network_ads_prediction_model_plot.png " width="350">
-
-5. Support vector machines classification model plot on test set
-
-<img src="persisted_models_data/support_vector_machines_social_network_ads_prediction_model_plot.png " width="350">
-
-6. Support vector machines classification model plot on test set
-
-<img src="persisted_models_data/naive_bayes_social_network_ads_prediction_model_plot.png " width="350">
-
-### Confusion matrices
+### Confusion matrices and plots
 
 
 #### Logistic Regression model
@@ -67,6 +44,7 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 0 ]   | 65        |   3     |
 | [ 1 ]   | 8         | 24      |
 
+<img src="persisted_models_data/logistic_regression_social_network_ads_prediction_model_plot.png " width="350">
 
 #### Decision Tree model
 
@@ -76,6 +54,8 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 0 ]   | 62        |   6     |
 | [ 1 ]   | 3         | 29      |
 
+<img src="persisted_models_data/decision_tree_social_network_ads_prediction_model_plot.png " width="350">
+
 #### Naive Bayes model
 
 |         | Predicted |    |
@@ -83,7 +63,7 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | Actual  | [ 0 ]     | [ 1  ]  |
 | [ 0 ]   | 65        |   3     |
 | [ 1 ]   | 7         | 25      |
-
+<img src="persisted_models_data/naive_bayes_social_network_ads_prediction_model_plot.png " width="350">
 
 #### SVM model
 
@@ -94,6 +74,8 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 1 ]   | 3         | 29      |
 
 
+<img src="persisted_models_data/support_vector_machines_social_network_ads_prediction_model_plot.png " width="350">
+
 #### Random Forest model
 
 |         | Predicted |    |
@@ -102,6 +84,7 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 0 ]   | 62        |   6     |
 | [ 1 ]   | 3         | 29      |
 
+<img src="persisted_models_data/random_forest_social_network_ads_prediction_model_plot.png " width="350">
 
 #### K Nearest Neighbor model
 
@@ -111,6 +94,7 @@ Each model was evaluated based on the accuracy score, and confusion matrix.
 | [ 0 ]   | 64        |   4     |
 | [ 1 ]   | 3         | 29      |
 
+<img src="persisted_models_data/k_nearest_neighbor_social_network_ads_prediction_model_plot.png " width="350">
 
 ## Relevant files
 - social_network_ads_base_model.py: Classification model abstraction for the problem.
