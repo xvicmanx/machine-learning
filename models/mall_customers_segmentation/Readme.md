@@ -14,7 +14,7 @@ See `dataset.csv` for more details of the data.
 For this simple problem tested with the following models:
   1. K-Means clustering model.
 
-## K-s clustering model selection
+## K-Means clustering model selection
 
 Different number of clusters were tried in from 1 to 10 clusters.
 For each model the `Within cluster sum of squares (WCSS)` was computed.
@@ -74,10 +74,21 @@ This information could be useful, for example campaigns to target users of high 
 ### 10 Clusters
 <img src="persisted_models_data/k_means/k_means_clustering_model_10_clusters_plot.png " width="350">
 
+## Hierarchical clustering assignments
+
+For 5 clusters
+<img src="persisted_models_data/hierarchichal/hierarchichal_clustering_model_5_clusters_plot.png " width="350">
+
+
 ## Relevant files
 - k_means_clustering_model.py: K-Means clustering model implementation for the problem.
 
 - k_means_clustering_analysis.py: K-Means clustering analysis and model selection.
+
+- hierarchichal_clustering_model.py: Hierarchichal clustering model implementation for the problem.
+
+- hierarchichal_clustering_analysis.py: Hierarchichal clustering analysis and model selection.
+
 
 - dataset.csv: Dataset
 
