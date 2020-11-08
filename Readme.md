@@ -27,6 +27,18 @@ Run the following command:
 python grpc_client.py
 ```
 
+Also using `grpcurl` tool
+
+```sh
+
+grpcurl  -d '{"years": 2}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictSalary
+
+grpcurl  -d '{"age": 47, "salary": "30000"}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictPurchase
+
+grpcurl  -d '{"annual_income": 20, "spending_score": 90}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictSegment
+
+```
+
 ### Machine Learning Service API
 Service that makes predictions using machine learning models.
 
