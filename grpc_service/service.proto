@@ -9,6 +9,7 @@ package machine_learning;
 service MachineLearning {
   rpc PredictSalary(PredictSalaryRequest) returns (PredictSalaryResponse) {}
   rpc PredictPurchase(PredictPurchaseRequest) returns (PredictPurchaseResponse) {}
+  rpc PredictSegment(PredictSegmentRequest) returns (PredictSegmentResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -26,4 +27,23 @@ message PredictPurchaseRequest {
 
 message PredictPurchaseResponse {
   bool purchase = 1;
+}
+
+message PredictSegmentRequest {
+  // Annual income
+  float annual_income = 1;
+  float spending_score = 2;
+}
+
+enum CustomerSegment {
+  UNKNOWN_SEGMENT = 0;
+  MEDIUM_INCOME_MEDIUM_SPENDING_SCORE_SEGMENT = 1;
+  LOW_INCOME_HIGH_SPENDING_SCORE_SEGMENT = 2;
+  HIGH_INCOME_HIGH_SPENDING_SCORE_SEGMENT = 3;
+  LOW_INCOME_LOW_SPENDING_SCORE_SEGMENT = 4;
+  HIGH_INCOME_LOW_SPENDING_SCORE_SEGMENT = 5;
+}
+
+message PredictSegmentResponse {
+  CustomerSegment segment = 1;
 }
