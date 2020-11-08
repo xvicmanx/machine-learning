@@ -110,7 +110,9 @@ class KMeansClusteringModel:
             c = 'black',
             label = 'Centroids',
         )
-
+        
+        plt.xlabel('Annual Income')
+        plt.ylabel('Spending Score')
         plt.legend()
         plt.savefig(dirname + '/' + self.__model_plot_filename)
         plt.clf()
