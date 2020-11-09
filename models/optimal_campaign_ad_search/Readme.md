@@ -13,6 +13,7 @@ See `dataset.csv` for more details of the data.
 ## Solution
 For this problem it was tested with the following models:
   1. Upper Confidence Bound model.
+  2. Thompson Sampling model
 
 ## Results
 
@@ -21,11 +22,24 @@ For Upper Confidence Bound model after finishing the training, it has converged 
 
 <img src="persisted_models_data/upper_confidence_bound_opt_ad_search_model_plot.png " width="350">
 
-## Results
+The UCB for 500 hundred rounds could not converge to the optimal value.
+<img src="persisted_models_data/upper_confidence_bound_opt_ad_search_500_rounds_model_plot.png " width="350">
+
+### Thompson Sampling model
+For Thompson Sampling model after finishing the training, it has also converged to an optimal option that is the fifth one.
+
+<img src="persisted_models_data/thompson_sampling_opt_ad_search_model_plot.png " width="350">
+
+The Thompson sampling model has converged faster than the UCB as it is shown in the following graph that correspond to 500 rounds.
+<img src="persisted_models_data/thompson_sampling_opt_ad_search_500_rounds_model_plot.png " width="350">
 
 ## Relevant files
 
+- optimal_campaign_ad_search_base_model.py: Optimal Campaign Ad search base model.
+
 - upper_confidence_bound_model.py: Upper Confidence Bound model implementation.
+
+- thompson_sampling_model.py: Thompson Samplin model implementation.
 
 - dataset.csv: Dataset
 
