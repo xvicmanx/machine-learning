@@ -11,6 +11,15 @@ The dataset is a csv file that contains 10,000 rows of simulation of the likelih
 See `dataset.csv` for more details of the data.
 
 ## Solution
+For this problem it was tested with the following models:
+  1. Upper Confidence Bound model.
+
+## Results
+
+### Upper Confidence Bound model
+For Upper Confidence Bound model after finishing the training, it has converged to an optimal option that is the fifth one.
+
+<img src="persisted_models_data/upper_confidence_bound_opt_ad_search_model_plot.png " width="350">
 
 ## Results
 
