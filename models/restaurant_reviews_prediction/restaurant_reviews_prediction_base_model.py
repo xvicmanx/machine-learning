@@ -103,7 +103,7 @@ class RestaurantReviewsPredictionModel:
         for word in negative_words:
             text = re.sub(word, negative_words[word], text)
         
-        # Removing not words characters
+        # Removing not alphabetic characters
         text = re.sub('[^a-z]', ' ', text)
 
         # Remove stop words that are not negative
