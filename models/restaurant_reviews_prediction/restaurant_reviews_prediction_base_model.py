@@ -8,6 +8,7 @@ import re
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, fbeta_score
 from sklearn.feature_extraction.text import CountVectorizer
+from nltk.stem.porter import PorterStemmer
 
 dirname = os.path.dirname(__file__)
 persisted_models_dirname = 'persisted_models_data'
@@ -45,7 +46,7 @@ class RestaurantReviewsPredictionModel:
         self.__model_filename = persisted_models_dirname + '/' + model_decamelized + "_serialized.sav"
         self.__vectorizer_filename = persisted_models_dirname + '/' + model_decamelized + "_vectorizer.sav"
         self.__model_plot_filename = persisted_models_dirname + '/' + model_decamelized + "_plot.png"
-
+        self.__stemmer = PorterStemmer()
 
     """Trains the model by reading the data from file, preprocessing and training the model
     """
@@ -106,8 +107,13 @@ class RestaurantReviewsPredictionModel:
         text = re.sub('[^a-z]', ' ', text)
 
         # Remove stop words that are not negative
+        # TODO
+    
         # Apply stemming
-        return text
+        tokens = text.split()
+        tokens = [self.__stemmer.stem(token) for token in tokens]
+
+        return ' '.join(tokens)
 
     def _preprocess_outputs(self, outputs):
         return outputs
