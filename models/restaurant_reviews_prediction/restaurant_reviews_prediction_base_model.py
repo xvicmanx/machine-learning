@@ -90,7 +90,7 @@ class RestaurantReviewsPredictionModel:
 
         # Generate bag of words
         if self.__vectorizer is None:
-            self.__vectorizer = CountVectorizer()
+            self.__vectorizer = CountVectorizer(max_features = 1500)
             return self.__vectorizer.fit_transform(items).toarray()
 
         return self.__vectorizer.transform(items).toarray()
@@ -105,6 +105,8 @@ class RestaurantReviewsPredictionModel:
         
         # Removing not alphabetic characters
         text = re.sub('[^a-z]', ' ', text)
+
+        text = re.sub('not ([a-z]+)', r'not_\1', text)
 
         # Remove stop words that are not negative
         # TODO
@@ -136,7 +138,7 @@ class RestaurantReviewsPredictionModel:
         inputs_train, inputs_test, outputs_train, outputs_test = train_test_split(
           self._preprocess_inputs(dataset.iloc[:, :-1].values),
           self._preprocess_outputs(dataset.iloc[:, -1].values),
-          test_size = 1/4,
+          test_size = 1/5,
           random_state = 0,
         )
         self.__inputs_train = self._transform_input_features(inputs_train)
