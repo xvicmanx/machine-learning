@@ -39,6 +39,8 @@ grpcurl  -d '{"annual_income": 20, "spending_score": 90}' -plaintext localhost:5
 
 grpcurl  -d '{}' -plaintext localhost:50051 machine_learning.MachineLearning/GetOptimalCampaignAdOption
 
+grpcurl  -d '{"review": "The food was excellent!"}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictReviewOutcome
+
 ```
 
 ### Machine Learning Service API
@@ -50,7 +52,7 @@ Service that makes predictions using machine learning models.
 | PredictPurchase | [PredictPurchaseRequest](#PredictPurchaseRequest) | [PredictPurchaseResponse](#PredictPurchaseResponse) | Predicts if a customer will purchase based on salary and age. |
 | PredictSegment | [PredictSegmentRequest](#PredictSegmentRequest) | [PredictSegmentResponse](#PredictSegmentResponse) | Predicts mall customer segment based on annual income and spending score. |
 | GetOptimalCampaignAdOption | [GetOptimalCampaignAdOptionRequest](#GetOptimalCampaignAdOptionRequest) | [GetOptimalCampaignAdOptionResponse](#GetOptimalCampaignAdOptionResponse) | Gets the optimal campaign ad |
-
+| PredictReviewOutcome | [PredictReviewOutcomeRequest](#PredictReviewOutcomeRequest) | [PredictReviewOutcomeResponse](#PredictReviewOutcomeResponse) | Predicts whether a review correspond to a like or dislike |
 
 <a name="PredictSalaryRequest"></a>
 
@@ -128,6 +130,28 @@ Empty
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | ad | int32 | | Optimal campaign ad |
+
+
+
+<a name="PredictReviewOutcomeRequest"></a>
+
+#### Predict Review Outcome Request
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| review | string | required | Review text |
+
+
+<a name="PredictReviewOutcomeResponse"></a>
+
+#### Predict Review Outcome Response
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| liked | bool | | Whether a review was a like or dislike |
+
 
 
 <a name="CustomerSegment"></a>
