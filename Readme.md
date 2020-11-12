@@ -37,6 +37,8 @@ grpcurl  -d '{"age": 47, "salary": "30000"}' -plaintext localhost:50051 machine_
 
 grpcurl  -d '{"annual_income": 20, "spending_score": 90}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictSegment
 
+grpcurl  -d '{}' -plaintext localhost:50051 machine_learning.MachineLearning/GetOptimalCampaignAdOption
+
 ```
 
 ### Machine Learning Service API
@@ -47,6 +49,7 @@ Service that makes predictions using machine learning models.
 | PredictSalary | [PredictSalaryRequest](#PredictSalaryRequest) | [PredictSalaryResponse](#PredictSalaryResponse) | Predicts salary based on years of experience. |
 | PredictPurchase | [PredictPurchaseRequest](#PredictPurchaseRequest) | [PredictPurchaseResponse](#PredictPurchaseResponse) | Predicts if a customer will purchase based on salary and age. |
 | PredictSegment | [PredictSegmentRequest](#PredictSegmentRequest) | [PredictSegmentResponse](#PredictSegmentResponse) | Predicts mall customer segment based on annual income and spending score. |
+| GetOptimalCampaignAdOption | [GetOptimalCampaignAdOptionRequest](#GetOptimalCampaignAdOptionRequest) | [GetOptimalCampaignAdOptionResponse](#GetOptimalCampaignAdOptionResponse) | Gets the optimal campaign ad |
 
 
 <a name="PredictSalaryRequest"></a>
@@ -109,6 +112,22 @@ Service that makes predictions using machine learning models.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | segment | [CustomerSegment](#CustomerSegment) | | Customer's segment |
+
+
+<a name="GetOptimalCampaignAdOptionRequest"></a>
+
+#### Get Optimal Campaign Ad Option Request
+
+Empty
+
+<a name="GetOptimalCampaignAdOptionResponse"></a>
+
+#### Get Optimal Campaign Ad Option Response
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ad | int32 | | Optimal campaign ad |
 
 
 <a name="CustomerSegment"></a>

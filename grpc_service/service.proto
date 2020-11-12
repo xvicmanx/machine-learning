@@ -10,6 +10,7 @@ service MachineLearning {
   rpc PredictSalary(PredictSalaryRequest) returns (PredictSalaryResponse) {}
   rpc PredictPurchase(PredictPurchaseRequest) returns (PredictPurchaseResponse) {}
   rpc PredictSegment(PredictSegmentRequest) returns (PredictSegmentResponse) {}
+  rpc GetOptimalCampaignAdOption(GetOptimalCampaignAdOptionRequest) returns (GetOptimalCampaignAdOptionResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -35,6 +36,10 @@ message PredictSegmentRequest {
   float spending_score = 2;
 }
 
+message PredictSegmentResponse {
+  CustomerSegment segment = 1;
+}
+
 enum CustomerSegment {
   UNKNOWN_SEGMENT = 0;
   MEDIUM_INCOME_MEDIUM_SPENDING_SCORE_SEGMENT = 1;
@@ -44,6 +49,8 @@ enum CustomerSegment {
   HIGH_INCOME_LOW_SPENDING_SCORE_SEGMENT = 5;
 }
 
-message PredictSegmentResponse {
-  CustomerSegment segment = 1;
+message GetOptimalCampaignAdOptionRequest {}
+
+message GetOptimalCampaignAdOptionResponse {
+  int32 ad = 1;
 }
