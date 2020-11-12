@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\030io.grpc.machine_learningB\017MachineLearningP\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rservice.proto\x12\x10machine_learning\"%\n\x14PredictSalaryRequest\x12\r\n\x05years\x18\x01 \x01(\x05\"\'\n\x15PredictSalaryResponse\x12\x0e\n\x06salary\x18\x01 \x01(\x02\"5\n\x16PredictPurchaseRequest\x12\x0b\n\x03\x61ge\x18\x01 \x01(\x05\x12\x0e\n\x06salary\x18\x02 \x01(\x02\"+\n\x17PredictPurchaseResponse\x12\x10\n\x08purchase\x18\x01 \x01(\x08\"F\n\x15PredictSegmentRequest\x12\x15\n\rannual_income\x18\x01 \x01(\x02\x12\x16\n\x0espending_score\x18\x02 \x01(\x02\"L\n\x16PredictSegmentResponse\x12\x32\n\x07segment\x18\x01 \x01(\x0e\x32!.machine_learning.CustomerSegment\"#\n!GetOptimalCampaignAdOptionRequest\"0\n\"GetOptimalCampaignAdOptionResponse\x12\n\n\x02\x61\x64\x18\x01 \x01(\x05*\x87\x02\n\x0f\x43ustomerSegment\x12\x13\n\x0fUNKNOWN_SEGMENT\x10\x00\x12/\n+MEDIUM_INCOME_MEDIUM_SPENDING_SCORE_SEGMENT\x10\x01\x12*\n&LOW_INCOME_HIGH_SPENDING_SCORE_SEGMENT\x10\x02\x12+\n\'HIGH_INCOME_HIGH_SPENDING_SCORE_SEGMENT\x10\x03\x12)\n%LOW_INCOME_LOW_SPENDING_SCORE_SEGMENT\x10\x04\x12*\n&HIGH_INCOME_LOW_SPENDING_SCORE_SEGMENT\x10\x05\x32\xd2\x03\n\x0fMachineLearning\x12\x62\n\rPredictSalary\x12&.machine_learning.PredictSalaryRequest\x1a\'.machine_learning.PredictSalaryResponse\"\x00\x12h\n\x0fPredictPurchase\x12(.machine_learning.PredictPurchaseRequest\x1a).machine_learning.PredictPurchaseResponse\"\x00\x12\x65\n\x0ePredictSegment\x12\'.machine_learning.PredictSegmentRequest\x1a(.machine_learning.PredictSegmentResponse\"\x00\x12\x89\x01\n\x1aGetOptimalCampaignAdOption\x12\x33.machine_learning.GetOptimalCampaignAdOptionRequest\x1a\x34.machine_learning.GetOptimalCampaignAdOptionResponse\"\x00\x42-\n\x18io.grpc.machine_learningB\x0fMachineLearningP\x01\x62\x06proto3'
+  serialized_pb=b'\n\rservice.proto\x12\x10machine_learning\"%\n\x14PredictSalaryRequest\x12\r\n\x05years\x18\x01 \x01(\x05\"\'\n\x15PredictSalaryResponse\x12\x0e\n\x06salary\x18\x01 \x01(\x02\"5\n\x16PredictPurchaseRequest\x12\x0b\n\x03\x61ge\x18\x01 \x01(\x05\x12\x0e\n\x06salary\x18\x02 \x01(\x02\"+\n\x17PredictPurchaseResponse\x12\x10\n\x08purchase\x18\x01 \x01(\x08\"F\n\x15PredictSegmentRequest\x12\x15\n\rannual_income\x18\x01 \x01(\x02\x12\x16\n\x0espending_score\x18\x02 \x01(\x02\"L\n\x16PredictSegmentResponse\x12\x32\n\x07segment\x18\x01 \x01(\x0e\x32!.machine_learning.CustomerSegment\"#\n!GetOptimalCampaignAdOptionRequest\"0\n\"GetOptimalCampaignAdOptionResponse\x12\n\n\x02\x61\x64\x18\x01 \x01(\x05\"-\n\x1bPredictReviewOutcomeRequest\x12\x0e\n\x06review\x18\x01 \x01(\t\"-\n\x1cPredictReviewOutcomeResponse\x12\r\n\x05liked\x18\x01 \x01(\x08*\x87\x02\n\x0f\x43ustomerSegment\x12\x13\n\x0fUNKNOWN_SEGMENT\x10\x00\x12/\n+MEDIUM_INCOME_MEDIUM_SPENDING_SCORE_SEGMENT\x10\x01\x12*\n&LOW_INCOME_HIGH_SPENDING_SCORE_SEGMENT\x10\x02\x12+\n\'HIGH_INCOME_HIGH_SPENDING_SCORE_SEGMENT\x10\x03\x12)\n%LOW_INCOME_LOW_SPENDING_SCORE_SEGMENT\x10\x04\x12*\n&HIGH_INCOME_LOW_SPENDING_SCORE_SEGMENT\x10\x05\x32\xcb\x04\n\x0fMachineLearning\x12\x62\n\rPredictSalary\x12&.machine_learning.PredictSalaryRequest\x1a\'.machine_learning.PredictSalaryResponse\"\x00\x12h\n\x0fPredictPurchase\x12(.machine_learning.PredictPurchaseRequest\x1a).machine_learning.PredictPurchaseResponse\"\x00\x12\x65\n\x0ePredictSegment\x12\'.machine_learning.PredictSegmentRequest\x1a(.machine_learning.PredictSegmentResponse\"\x00\x12\x89\x01\n\x1aGetOptimalCampaignAdOption\x12\x33.machine_learning.GetOptimalCampaignAdOptionRequest\x1a\x34.machine_learning.GetOptimalCampaignAdOptionResponse\"\x00\x12w\n\x14PredictReviewOutcome\x12-.machine_learning.PredictReviewOutcomeRequest\x1a..machine_learning.PredictReviewOutcomeResponse\"\x00\x42-\n\x18io.grpc.machine_learningB\x0fMachineLearningP\x01\x62\x06proto3'
 )
 
 _CUSTOMERSEGMENT = _descriptor.EnumDescriptor(
@@ -63,8 +63,8 @@ _CUSTOMERSEGMENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=453,
-  serialized_end=716,
+  serialized_start=547,
+  serialized_end=810,
 )
 _sym_db.RegisterEnumDescriptor(_CUSTOMERSEGMENT)
 
@@ -340,6 +340,70 @@ _GETOPTIMALCAMPAIGNADOPTIONRESPONSE = _descriptor.Descriptor(
   serialized_end=450,
 )
 
+
+_PREDICTREVIEWOUTCOMEREQUEST = _descriptor.Descriptor(
+  name='PredictReviewOutcomeRequest',
+  full_name='machine_learning.PredictReviewOutcomeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='review', full_name='machine_learning.PredictReviewOutcomeRequest.review', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=452,
+  serialized_end=497,
+)
+
+
+_PREDICTREVIEWOUTCOMERESPONSE = _descriptor.Descriptor(
+  name='PredictReviewOutcomeResponse',
+  full_name='machine_learning.PredictReviewOutcomeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='liked', full_name='machine_learning.PredictReviewOutcomeResponse.liked', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=499,
+  serialized_end=544,
+)
+
 _PREDICTSEGMENTRESPONSE.fields_by_name['segment'].enum_type = _CUSTOMERSEGMENT
 DESCRIPTOR.message_types_by_name['PredictSalaryRequest'] = _PREDICTSALARYREQUEST
 DESCRIPTOR.message_types_by_name['PredictSalaryResponse'] = _PREDICTSALARYRESPONSE
@@ -349,6 +413,8 @@ DESCRIPTOR.message_types_by_name['PredictSegmentRequest'] = _PREDICTSEGMENTREQUE
 DESCRIPTOR.message_types_by_name['PredictSegmentResponse'] = _PREDICTSEGMENTRESPONSE
 DESCRIPTOR.message_types_by_name['GetOptimalCampaignAdOptionRequest'] = _GETOPTIMALCAMPAIGNADOPTIONREQUEST
 DESCRIPTOR.message_types_by_name['GetOptimalCampaignAdOptionResponse'] = _GETOPTIMALCAMPAIGNADOPTIONRESPONSE
+DESCRIPTOR.message_types_by_name['PredictReviewOutcomeRequest'] = _PREDICTREVIEWOUTCOMEREQUEST
+DESCRIPTOR.message_types_by_name['PredictReviewOutcomeResponse'] = _PREDICTREVIEWOUTCOMERESPONSE
 DESCRIPTOR.enum_types_by_name['CustomerSegment'] = _CUSTOMERSEGMENT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -408,6 +474,20 @@ GetOptimalCampaignAdOptionResponse = _reflection.GeneratedProtocolMessageType('G
   })
 _sym_db.RegisterMessage(GetOptimalCampaignAdOptionResponse)
 
+PredictReviewOutcomeRequest = _reflection.GeneratedProtocolMessageType('PredictReviewOutcomeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PREDICTREVIEWOUTCOMEREQUEST,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:machine_learning.PredictReviewOutcomeRequest)
+  })
+_sym_db.RegisterMessage(PredictReviewOutcomeRequest)
+
+PredictReviewOutcomeResponse = _reflection.GeneratedProtocolMessageType('PredictReviewOutcomeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _PREDICTREVIEWOUTCOMERESPONSE,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:machine_learning.PredictReviewOutcomeResponse)
+  })
+_sym_db.RegisterMessage(PredictReviewOutcomeResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -418,8 +498,8 @@ _MACHINELEARNING = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=719,
-  serialized_end=1185,
+  serialized_start=813,
+  serialized_end=1400,
   methods=[
   _descriptor.MethodDescriptor(
     name='PredictSalary',
@@ -458,6 +538,16 @@ _MACHINELEARNING = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETOPTIMALCAMPAIGNADOPTIONREQUEST,
     output_type=_GETOPTIMALCAMPAIGNADOPTIONRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PredictReviewOutcome',
+    full_name='machine_learning.MachineLearning.PredictReviewOutcome',
+    index=4,
+    containing_service=None,
+    input_type=_PREDICTREVIEWOUTCOMEREQUEST,
+    output_type=_PREDICTREVIEWOUTCOMERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

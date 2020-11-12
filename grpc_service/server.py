@@ -13,11 +13,13 @@ class MachineLearningServicer(BaseServicer):
         social_ads_model,
         mall_customers_segmentation_model,
         campaign_ad_optimization_model,
+        restaurant_review_prediction_model,
     ):
         self.__salary_model = salary_model
         self.__social_ads_model = social_ads_model
         self.__mall_customers_segmentation_model = mall_customers_segmentation_model
         self.__campaign_ad_optimization_model = campaign_ad_optimization_model
+        self.__restaurant_review_prediction_model = restaurant_review_prediction_model
 
     def PredictSalary(self, request, context):
        predictions = self.__salary_model.predict([[request.years]])
@@ -34,4 +36,8 @@ class MachineLearningServicer(BaseServicer):
     def GetOptimalCampaignAdOption(self, request, context):
        option = self.__campaign_ad_optimization_model.optimal_option()
        return srv.GetOptimalCampaignAdOptionResponse(ad = option + 1)
+
+    def PredictReviewOutcome(self, request, context):
+       predictions = self.__restaurant_review_prediction_model.predict([[request.review]])
+       return srv.PredictReviewOutcomeResponse(liked = bool(predictions[0]))
 

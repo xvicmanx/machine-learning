@@ -11,6 +11,7 @@ service MachineLearning {
   rpc PredictPurchase(PredictPurchaseRequest) returns (PredictPurchaseResponse) {}
   rpc PredictSegment(PredictSegmentRequest) returns (PredictSegmentResponse) {}
   rpc GetOptimalCampaignAdOption(GetOptimalCampaignAdOptionRequest) returns (GetOptimalCampaignAdOptionResponse) {}
+  rpc PredictReviewOutcome(PredictReviewOutcomeRequest) returns (PredictReviewOutcomeResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -53,4 +54,12 @@ message GetOptimalCampaignAdOptionRequest {}
 
 message GetOptimalCampaignAdOptionResponse {
   int32 ad = 1;
+}
+
+message PredictReviewOutcomeRequest {
+  string review = 1;
+}
+
+message PredictReviewOutcomeResponse {
+  bool liked = 1;
 }

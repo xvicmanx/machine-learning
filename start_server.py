@@ -11,6 +11,7 @@ from models.salary_prediction.linear_regression_model import LinearRegressionSal
 from models.social_network_ads_prediction.svm_classification_model import SupportVectorMachinesSocialNetworkAdsPredictionModel
 from models.mall_customers_segmentation.k_means_clustering_model import KMeansClusteringModel
 from models.optimal_campaign_ad_search.thompson_sampling_model import ThompsonSamplingOptAdSearchModel
+from models.restaurant_reviews_prediction.svm_classification_model import SupportVectorMachinesRestaurantReviewsPredictionModel
 
 def serve():
     predict_salary_model = LinearRegressionSalaryPredictionModel()
@@ -25,12 +26,16 @@ def serve():
     campaign_ad_optimization_model = ThompsonSamplingOptAdSearchModel()
     campaign_ad_optimization_model.load()
 
+    restaurant_review_prediction_model = SupportVectorMachinesRestaurantReviewsPredictionModel()
+    restaurant_review_prediction_model.load()
+
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     servicer = MachineLearningServicer(
         predict_salary_model,
         social_ads_model,
         mall_customers_segmentation_model,
         campaign_ad_optimization_model,
+        restaurant_review_prediction_model,
     )
     add_MachineLearningServicer_to_server(servicer, server)
 
