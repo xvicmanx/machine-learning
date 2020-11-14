@@ -84,9 +84,7 @@ class BankLeavingPredictionModel:
             )
             self.__inputs_one_hot_encoder.fit(inputs)
 
-        inputs = self.__inputs_one_hot_encoder.transform(inputs)
-        
-        return inputs
+        return self.__inputs_one_hot_encoder.transform(inputs)
 
     def _preprocess_outputs(self, outputs):
         return outputs

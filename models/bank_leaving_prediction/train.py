@@ -7,6 +7,7 @@ sys.path.append(os.path.dirname(currentdir))
 from helpers import  train_and_evaluate, display_predictions, display_classification_evaluation
 
 from svm_classification_model import SupportVectorMachinesBankLeavingPredictionModel
+from random_forest_classification_model import RandomForestBankLeavingPredictionModel
 
 title = 'Training bank leaving prediction models'
 
@@ -14,6 +15,7 @@ print(title + ': Start')
 
 models = {
     'SVM Model': SupportVectorMachinesBankLeavingPredictionModel(),
+    'Random Forest Model': RandomForestBankLeavingPredictionModel(),
 }
 
 evaluation = train_and_evaluate(models)
