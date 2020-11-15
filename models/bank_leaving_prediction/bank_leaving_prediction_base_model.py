@@ -109,6 +109,7 @@ class BankLeavingPredictionModel:
           self._preprocess_outputs(dataset.iloc[:, -1].values),
           test_size = 1 / 5,
           random_state = 0,
+          stratify = dataset.iloc[:, -1].values,
         )
         self.__inputs_train = self._transform_input_features(inputs_train)
         self.__outputs_train = self._transform_outputs(outputs_train)

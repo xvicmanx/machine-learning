@@ -12,4 +12,5 @@ class NeuralNetworkBankLeavingPredictionModel(bm.BankLeavingPredictionModel):
             hidden_layer_sizes = (6, 6),
             random_state = 0,
             learning_rate = 'adaptive',
+            max_iter = 300
         )
