@@ -41,6 +41,9 @@ grpcurl  -d '{}' -plaintext localhost:50051 machine_learning.MachineLearning/Get
 
 grpcurl  -d '{"review": "The food was excellent!"}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictReviewOutcome
 
+
+grpcurl  -d '{"credit_score":502,"geography":"France","gender":"Female","age":42,"tenure":8,"balance":159660.8,"number_of_products":3,"has_credit_card":true,"is_active_member":false,"estimated_salary":113931.57}' -plaintext localhost:50051 machine_learning.MachineLearning/PredictBankLeaving
+
 ```
 
 ### Machine Learning Service API
@@ -151,6 +154,36 @@ Empty
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | liked | bool | | Whether a review was a like or dislike |
+
+
+<a name="PredictBankLeavingRequest"></a>
+
+#### Predict Bank Leaving Request
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| credit_score | float | required | Customer's credit score |
+| geography | string | required | Customer's country |
+| gender | string | required | Customer's gender |
+| age | int32 | required | Customer's age |
+| tenure | int32 | required | Customer's tenure |
+| balance | float | required | Customer's balance |
+| number_of_products | int32 | required | Customer's number of products |
+| has_credit_card | bool | required | If the customer has credit card |
+| is_active_member | bool | required | If the customer is an active member |
+| estimated_salary | float | required | Customer's estimated salary |
+
+
+<a name="PredictBankLeavingResponse"></a>
+
+#### Predict Bank Leaving Response
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| exited | bool | | Whether the user is leaving or not |
+
 
 
 
