@@ -39,6 +39,11 @@ class MachineLearningStub(object):
                 request_serializer=service__pb2.PredictReviewOutcomeRequest.SerializeToString,
                 response_deserializer=service__pb2.PredictReviewOutcomeResponse.FromString,
                 )
+        self.PredictBankLeaving = channel.unary_unary(
+                '/machine_learning.MachineLearning/PredictBankLeaving',
+                request_serializer=service__pb2.PredictBankLeavingRequest.SerializeToString,
+                response_deserializer=service__pb2.PredictBankLeavingResponse.FromString,
+                )
 
 
 class MachineLearningServicer(object):
@@ -74,6 +79,12 @@ class MachineLearningServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PredictBankLeaving(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MachineLearningServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -101,6 +112,11 @@ def add_MachineLearningServicer_to_server(servicer, server):
                     servicer.PredictReviewOutcome,
                     request_deserializer=service__pb2.PredictReviewOutcomeRequest.FromString,
                     response_serializer=service__pb2.PredictReviewOutcomeResponse.SerializeToString,
+            ),
+            'PredictBankLeaving': grpc.unary_unary_rpc_method_handler(
+                    servicer.PredictBankLeaving,
+                    request_deserializer=service__pb2.PredictBankLeavingRequest.FromString,
+                    response_serializer=service__pb2.PredictBankLeavingResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -194,5 +210,22 @@ class MachineLearning(object):
         return grpc.experimental.unary_unary(request, target, '/machine_learning.MachineLearning/PredictReviewOutcome',
             service__pb2.PredictReviewOutcomeRequest.SerializeToString,
             service__pb2.PredictReviewOutcomeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PredictBankLeaving(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/machine_learning.MachineLearning/PredictBankLeaving',
+            service__pb2.PredictBankLeavingRequest.SerializeToString,
+            service__pb2.PredictBankLeavingResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

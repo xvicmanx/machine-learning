@@ -12,6 +12,8 @@ from models.social_network_ads_prediction.svm_classification_model import Suppor
 from models.mall_customers_segmentation.k_means_clustering_model import KMeansClusteringModel
 from models.optimal_campaign_ad_search.thompson_sampling_model import ThompsonSamplingOptAdSearchModel
 from models.restaurant_reviews_prediction.svm_classification_model import SupportVectorMachinesRestaurantReviewsPredictionModel
+from models.bank_leaving_prediction.neural_network_classification_model import NeuralNetworkBankLeavingPredictionModel
+
 
 def serve():
     predict_salary_model = LinearRegressionSalaryPredictionModel()
@@ -29,6 +31,9 @@ def serve():
     restaurant_review_prediction_model = SupportVectorMachinesRestaurantReviewsPredictionModel()
     restaurant_review_prediction_model.load()
 
+    bank_leaving_model = NeuralNetworkBankLeavingPredictionModel()
+    bank_leaving_model.load()
+
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     servicer = MachineLearningServicer(
         predict_salary_model,
@@ -36,6 +41,7 @@ def serve():
         mall_customers_segmentation_model,
         campaign_ad_optimization_model,
         restaurant_review_prediction_model,
+        bank_leaving_model,
     )
     add_MachineLearningServicer_to_server(servicer, server)
 

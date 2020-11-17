@@ -12,6 +12,7 @@ service MachineLearning {
   rpc PredictSegment(PredictSegmentRequest) returns (PredictSegmentResponse) {}
   rpc GetOptimalCampaignAdOption(GetOptimalCampaignAdOptionRequest) returns (GetOptimalCampaignAdOptionResponse) {}
   rpc PredictReviewOutcome(PredictReviewOutcomeRequest) returns (PredictReviewOutcomeResponse) {}
+  rpc PredictBankLeaving(PredictBankLeavingRequest) returns (PredictBankLeavingResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -62,4 +63,21 @@ message PredictReviewOutcomeRequest {
 
 message PredictReviewOutcomeResponse {
   bool liked = 1;
+}
+
+message PredictBankLeavingRequest {
+  float credit_score = 1;
+  string geography = 2;
+  string gender = 3;
+  int32 age = 4;
+  int32 tenure = 5;
+  float balance = 6;
+  int32 number_of_products = 7;
+  bool has_credit_card = 8;
+  bool is_active_member = 9;
+  float estimated_salary = 10;
+}
+
+message PredictBankLeavingResponse {
+  bool exited = 1;
 }
