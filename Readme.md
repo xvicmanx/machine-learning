@@ -56,6 +56,7 @@ Service that makes predictions using machine learning models.
 | PredictSegment | [PredictSegmentRequest](#PredictSegmentRequest) | [PredictSegmentResponse](#PredictSegmentResponse) | Predicts mall customer segment based on annual income and spending score. |
 | GetOptimalCampaignAdOption | [GetOptimalCampaignAdOptionRequest](#GetOptimalCampaignAdOptionRequest) | [GetOptimalCampaignAdOptionResponse](#GetOptimalCampaignAdOptionResponse) | Gets the optimal campaign ad |
 | PredictReviewOutcome | [PredictReviewOutcomeRequest](#PredictReviewOutcomeRequest) | [PredictReviewOutcomeResponse](#PredictReviewOutcomeResponse) | Predicts whether a review correspond to a like or dislike |
+| PredictBankLeaving | [PredictBankLeavingRequest](#PredictBankLeavingRequest) | [PredictBankLeavingResponse](#PredictBankLeavingResponse) | Predicts whether a customer will leaving a banking institution or not |
 
 <a name="PredictSalaryRequest"></a>
 
