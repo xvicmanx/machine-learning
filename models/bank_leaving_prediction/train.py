@@ -9,6 +9,7 @@ from helpers import  train_and_evaluate, display_predictions, display_classifica
 from svm_classification_model import SupportVectorMachinesBankLeavingPredictionModel
 from random_forest_classification_model import RandomForestBankLeavingPredictionModel
 from neural_network_classification_model import NeuralNetworkBankLeavingPredictionModel
+from neural_network_v2_classification_model import NeuralNetworkV2BankLeavingPredictionModel
 
 title = 'Training bank leaving prediction models'
 
@@ -18,6 +19,7 @@ models = {
     'SVM Model': SupportVectorMachinesBankLeavingPredictionModel(),
     'Random Forest Model': RandomForestBankLeavingPredictionModel(),
     'Neural Network Model': NeuralNetworkBankLeavingPredictionModel(),
+    'Neural Network V2 Model': NeuralNetworkV2BankLeavingPredictionModel()
 }
 
 evaluation = train_and_evaluate(models)

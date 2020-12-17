@@ -1,0 +1,2 @@
+model_checkpoint_path: "neural_network_v2_bank_leaving_prediction_model_serialized.sav"
+all_model_checkpoint_paths: "neural_network_v2_bank_leaving_prediction_model_serialized.sav"

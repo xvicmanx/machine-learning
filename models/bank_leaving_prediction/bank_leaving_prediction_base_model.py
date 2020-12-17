@@ -48,7 +48,7 @@ class BankLeavingPredictionModel:
     """Loads the serialized model
     """
     def load(self):
-        self.__model = self._load_object(self.__model_filename)
+        self.__model = self._load_model(self.__model_filename)
         self.__inputs_scaler = self._load_object(self.__inputs_scaler_filename)
         self.__inputs_label_encoder = self._load_object(self.__inputs_label_encoder_filename)
         self.__inputs_one_hot_encoder = self._load_object(self.__inputs_one_hot_encoder_filename)
@@ -56,10 +56,16 @@ class BankLeavingPredictionModel:
     """Save a serialized version of the model to a file
     """
     def save(self):
-        self._save_object(self.__model, self.__model_filename)
+        self._save_model(self.__model_filename)
         self._save_object(self.__inputs_scaler, self.__inputs_scaler_filename)
         self._save_object(self.__inputs_label_encoder, self.__inputs_label_encoder_filename)
         self._save_object(self.__inputs_one_hot_encoder, self.__inputs_one_hot_encoder_filename)
+
+    def _save_model(self, filename):
+        self._save_object(self.__model, filename)
+
+    def _load_model(self, filename):
+        return self._load_object(filename)
 
     def _save_object(self, obj, filename):
         joblib.dump(obj, dirname + '/' + filename)
