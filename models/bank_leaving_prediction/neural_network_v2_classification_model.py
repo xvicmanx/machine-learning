@@ -1,6 +1,5 @@
 
 import tensorflow as tf
-import os.path
 
 import bank_leaving_prediction_base_model as bm
 
@@ -24,14 +23,12 @@ class NeuralNetwork:
     def predict(self, input):
         return self.__model.predict(input).round()
 
-    def save(self, filename):
-        return self.__model.save_weights(filename)
+    def save(self, file_path):
+        return self.__model.save_weights(file_path)
 
-    def load(self, filename):
-        return self.__model.load_weights(filename)
+    def load(self, file_path):
+        return self.__model.load_weights(file_path)
 
-
-dirname = os.path.dirname(__file__)
 
 class NeuralNetworkV2BankLeavingPredictionModel(bm.BankLeavingPredictionModel):
     def __init__(self):
@@ -41,8 +38,8 @@ class NeuralNetworkV2BankLeavingPredictionModel(bm.BankLeavingPredictionModel):
     def _get_model_instance(self):
         return self.__model
 
-    def _save_model(self, filename):
-        self.__model.save(dirname + '/' + filename)
+    def _save_model(self, file_path):
+        self.__model.save(file_path)
 
-    def _load_model(self, filename):
-        return self.__model.load(dirname + '/' + filename)
+    def _load_model(self, file_path):
+        return self.__model.load(file_path)
