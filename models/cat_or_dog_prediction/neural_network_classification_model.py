@@ -40,8 +40,8 @@ class ConvolutionalNeuralNetwork:
     def fit(self, X, y):
         self.__model.fit(x = X, epochs = 25)
 
-    def predict(self, input):
-        return self.__model.predict(input).round()
+    def predict(self, inputs):
+        return self.__model.predict(inputs).round()
 
     def save(self, file_path):
         return self.__model.save_weights(file_path)

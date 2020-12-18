@@ -168,7 +168,6 @@ class ClassificationModel:
       """      
       transformed_outputs = self._transform_outputs(test_outputs)
       predictions = self.__model.predict(self._transform_inputs(test_inputs))
-      length = len(transformed_outputs)
 
       return {
         'accuracy_score': accuracy_score(
@@ -193,13 +192,5 @@ class ClassificationModel:
           transformed_outputs,
           predictions,
           beta = 2.0,
-        ),
-        'comparison': np.concatenate(
-          (
-            test_inputs.reshape(length, 1),
-            predictions.reshape(length, 1),
-            transformed_outputs.reshape(length, 1),
-          ),
-          1,
         ),
       }

@@ -52,16 +52,6 @@ class CatOrDogPredictionModel(ClassificationModel):
             class_mode = 'binary',
         )
 
-        test_inputs = []
-        test_outputs = []
-        test_set.reset()
-
-        for _ in range(test_set.__len__()):
-            a, b = test_set.next()
-            test_inputs.append(a)
-            test_outputs.append(b)
-        
-        test_inputs = np.array(test_inputs)
-        test_outputs = np.array(test_outputs)
+        test_inputs, test_outputs = test_set.next()
 
         return train_set, None, test_inputs, test_outputs
