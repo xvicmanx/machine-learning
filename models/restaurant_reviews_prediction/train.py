@@ -1,8 +1,8 @@
 import os, sys
 
-currentdir = os.path.dirname(os.path.realpath(__file__))
-# Appending parent dir
-sys.path.append(os.path.dirname(currentdir))
+parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+sys.path.append(parent_dir)
+sys.path.append(os.path.dirname(parent_dir))
 
 from helpers import  train_and_evaluate, display_predictions, display_classification_evaluation
 

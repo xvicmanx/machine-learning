@@ -1,11 +1,12 @@
 import os.path
 import decamelize
 import pandas as pd
+
 from matplotlib.colors import ListedColormap
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
-from classification_model import ClassificationModel
+from core.classification_model import ClassificationModel
 
 dirname = os.path.dirname(__file__)
 persisted_models_dirname = 'persisted_models_data'
@@ -31,7 +32,7 @@ class BankLeavingPredictionModel(ClassificationModel):
     def load(self):
         """Loads the serialized model
         """
-        self.__model = self._load_model(self.__model_file_path)
+        self._load_model(self.__model_file_path)
         self.__inputs_scaler = self._load_object(self.__inputs_scaler_file_path)
         self.__inputs_label_encoder = self._load_object(self.__inputs_label_encoder_file_path)
         self.__inputs_one_hot_encoder = self._load_object(self.__inputs_one_hot_encoder_file_path)
