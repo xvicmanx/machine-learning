@@ -1,8 +1,18 @@
 """Machine learning Servicer"""
 
 from concurrent import futures
+import tensorflow as tf
+import numpy as np
+import base64
+from tensorflow.keras.preprocessing import image
+
 from service_pb2_grpc import MachineLearningServicer as BaseServicer
 import service_pb2 as srv
+
+def preprocess_and_decode(img_str):
+    img = tf.io.decode_base64(img_str)
+    img = tf.image.decode_jpeg(img, channels = 3)
+    return tf.image.resize(img, (64, 64))
 
 class MachineLearningServicer(BaseServicer):
     """Provides methods that implement functionality of machine learning server."""
@@ -15,6 +25,7 @@ class MachineLearningServicer(BaseServicer):
         campaign_ad_optimization_model,
         restaurant_review_prediction_model,
         bank_leaving_prediction_model,
+        cat_or_dog_prediction_model,
     ):
         self.__salary_model = salary_model
         self.__social_ads_model = social_ads_model
@@ -22,6 +33,7 @@ class MachineLearningServicer(BaseServicer):
         self.__campaign_ad_optimization_model = campaign_ad_optimization_model
         self.__restaurant_review_prediction_model = restaurant_review_prediction_model
         self.__bank_leaving_prediction_model = bank_leaving_prediction_model
+        self.__cat_or_dog_prediction_model = cat_or_dog_prediction_model
 
     def PredictSalary(self, request, context):
        predictions = self.__salary_model.predict([[request.years]])
@@ -42,6 +54,15 @@ class MachineLearningServicer(BaseServicer):
     def PredictReviewOutcome(self, request, context):
        predictions = self.__restaurant_review_prediction_model.predict([[request.review]])
        return srv.PredictReviewOutcomeResponse(liked = bool(predictions[0]))
+
+    def PredictCatOrDog(self, request, context):
+       gen = image.ImageDataGenerator(rescale = 1. / 255)
+       img = preprocess_and_decode(request.img)
+       img = image.img_to_array(img)
+       iterator = gen.flow(np.array([img]))
+       predictions = self.__cat_or_dog_prediction_model.predict(iterator, False)
+       return srv.PredictCatOrDogResponse(dog = bool(predictions[0]))
+
 
     def PredictBankLeaving(self, request, context):
        predictions = self.__bank_leaving_prediction_model.predict([[

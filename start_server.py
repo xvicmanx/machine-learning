@@ -13,9 +13,10 @@ from models.mall_customers_segmentation.k_means_clustering_model import KMeansCl
 from models.optimal_campaign_ad_search.thompson_sampling_model import ThompsonSamplingOptAdSearchModel
 from models.restaurant_reviews_prediction.svm_classification_model import SupportVectorMachinesRestaurantReviewsPredictionModel
 from models.bank_leaving_prediction.neural_network_classification_model import NeuralNetworkBankLeavingPredictionModel
-
+from models.cat_or_dog_prediction.neural_network_classification_model import NeuralNetworkCatOrDogPredictionModel
 
 def serve():
+    print('START')
     predict_salary_model = LinearRegressionSalaryPredictionModel()
     predict_salary_model.load()
 
@@ -34,6 +35,9 @@ def serve():
     bank_leaving_model = NeuralNetworkBankLeavingPredictionModel()
     bank_leaving_model.load()
 
+    cat_or_dog_model = NeuralNetworkCatOrDogPredictionModel()
+    cat_or_dog_model.load()
+
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     servicer = MachineLearningServicer(
         predict_salary_model,
@@ -42,6 +46,7 @@ def serve():
         campaign_ad_optimization_model,
         restaurant_review_prediction_model,
         bank_leaving_model,
+        cat_or_dog_model,
     )
     add_MachineLearningServicer_to_server(servicer, server)
 
@@ -54,6 +59,7 @@ def serve():
   
     server.add_insecure_port('[::]:50051')
     server.start()
+    print('END')
     server.wait_for_termination()
 
 

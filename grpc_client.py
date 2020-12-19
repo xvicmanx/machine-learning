@@ -1,5 +1,16 @@
 import grpc
+import os.path
+import tensorflow as tf
+from tensorflow.keras.preprocessing import image
+
 from grpc_service import service_pb2 as srv, service_pb2_grpc
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+def load_decoded_img(name):
+    img = image.load_img(current_dir + '/models/cat_or_dog_prediction/datasets/' + name)
+    img = tf.image.encode_jpeg(image.img_to_array(img))
+    return tf.io.encode_base64(img)
 
 
 def run():
@@ -24,12 +35,19 @@ def run():
             estimated_salary = 113931.57,
         ))
 
+        first_img = load_decoded_img('cat-rsz.jpg')
+        second_img = load_decoded_img('puppy-rsz.jpg')
+        first_cat_or_dog_response = client.PredictCatOrDog(srv.PredictCatOrDogRequest(img = first_img.numpy()))
+        second_cat_or_dog_response = client.PredictCatOrDog(srv.PredictCatOrDogRequest(img = second_img.numpy()))
+
         print('The Salary is = ' + str(salary_response.salary))
         print('Will purchase? = ' + str(purchase_response.purchase))
         print('Segment = ' + str(segment_response.segment))
         print('Ad = ' + str(ad_response.ad))
         print('A like review? = ' + str(review_response.liked))
         print('Bank leaving? = ' + str(bank_leaving_response.exited))
+        print('First image is a Dog? = ' + str(first_cat_or_dog_response.dog))
+        print('Second image is a Dog? = ' + str(second_cat_or_dog_response.dog))
 
 
 if __name__ == '__main__':

@@ -13,6 +13,7 @@ service MachineLearning {
   rpc GetOptimalCampaignAdOption(GetOptimalCampaignAdOptionRequest) returns (GetOptimalCampaignAdOptionResponse) {}
   rpc PredictReviewOutcome(PredictReviewOutcomeRequest) returns (PredictReviewOutcomeResponse) {}
   rpc PredictBankLeaving(PredictBankLeavingRequest) returns (PredictBankLeavingResponse) {}
+  rpc PredictCatOrDog(PredictCatOrDogRequest) returns (PredictCatOrDogResponse) {}
 }
 
 message PredictSalaryRequest {
@@ -80,4 +81,12 @@ message PredictBankLeavingRequest {
 
 message PredictBankLeavingResponse {
   bool exited = 1;
+}
+
+message PredictCatOrDogRequest {
+  string img = 1;
+}
+
+message PredictCatOrDogResponse {
+  bool dog = 1;
 }

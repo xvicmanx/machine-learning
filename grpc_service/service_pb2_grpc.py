@@ -44,6 +44,11 @@ class MachineLearningStub(object):
                 request_serializer=service__pb2.PredictBankLeavingRequest.SerializeToString,
                 response_deserializer=service__pb2.PredictBankLeavingResponse.FromString,
                 )
+        self.PredictCatOrDog = channel.unary_unary(
+                '/machine_learning.MachineLearning/PredictCatOrDog',
+                request_serializer=service__pb2.PredictCatOrDogRequest.SerializeToString,
+                response_deserializer=service__pb2.PredictCatOrDogResponse.FromString,
+                )
 
 
 class MachineLearningServicer(object):
@@ -85,6 +90,12 @@ class MachineLearningServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PredictCatOrDog(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MachineLearningServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -117,6 +128,11 @@ def add_MachineLearningServicer_to_server(servicer, server):
                     servicer.PredictBankLeaving,
                     request_deserializer=service__pb2.PredictBankLeavingRequest.FromString,
                     response_serializer=service__pb2.PredictBankLeavingResponse.SerializeToString,
+            ),
+            'PredictCatOrDog': grpc.unary_unary_rpc_method_handler(
+                    servicer.PredictCatOrDog,
+                    request_deserializer=service__pb2.PredictCatOrDogRequest.FromString,
+                    response_serializer=service__pb2.PredictCatOrDogResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -227,5 +243,22 @@ class MachineLearning(object):
         return grpc.experimental.unary_unary(request, target, '/machine_learning.MachineLearning/PredictBankLeaving',
             service__pb2.PredictBankLeavingRequest.SerializeToString,
             service__pb2.PredictBankLeavingResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PredictCatOrDog(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/machine_learning.MachineLearning/PredictCatOrDog',
+            service__pb2.PredictCatOrDogRequest.SerializeToString,
+            service__pb2.PredictCatOrDogResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
