@@ -6,20 +6,20 @@ from sklearn.metrics import confusion_matrix, accuracy_score, fbeta_score
 
 class ClassificationModel:
     def __init__(self):
-      self.__model = None
+      self._model = None
   
     """Trains the model by reading the data from file, preprocessing and training the model
     """
     def train(self):
       train_inputs, train_outputs, test_inputs, test_outputs = self._split_data()
-      self.__model = self._get_model_instance()
-      self.__model.fit(
+      self._model = self._get_model_instance()
+      self._model.fit(
         self._transform_inputs(train_inputs),
         self._transform_outputs(train_outputs),
       )
       return self._evaluate(test_inputs, test_outputs)
 
-    def predict(self, items):
+    def predict(self, items, to_data_frame = True):
       """Predicts the value of the list of given values
 
       Args:
@@ -27,9 +27,14 @@ class ClassificationModel:
 
       Returns:
           array: List of predicted outcomes
-      """      
-      inputs = self._transform_inputs(self._preprocess_inputs(pd.DataFrame(items).values))
-      return self._inverse_transform_outputs(self.__model.predict(inputs))
+      """
+      inputs = items
+
+      if to_data_frame:
+        inputs = pd.DataFrame(items).values
+
+      inputs = self._transform_inputs(self._preprocess_inputs(inputs))
+      return self._inverse_transform_outputs(self._model.predict(inputs))
     
     def load(self):
       """Loads the serialized model
@@ -70,10 +75,10 @@ class ClassificationModel:
       raise Exception('Method not implemented')
 
     def _save_model(self, file_path):
-      self._save_object(self.__model, file_path)
+      self._save_object(self._model, file_path)
 
     def _load_model(self, file_path):
-      self.__model = self._load_object(file_path)
+      self._model = self._load_object(file_path)
 
     def _save_object(self, obj, file_path):
       """Serializes a given object and saves it to a file
@@ -167,7 +172,7 @@ class ClassificationModel:
                   f2_score
       """      
       transformed_outputs = self._transform_outputs(test_outputs)
-      predictions = self.__model.predict(self._transform_inputs(test_inputs))
+      predictions = self._model.predict(self._transform_inputs(test_inputs))
 
       return {
         'accuracy_score': accuracy_score(

@@ -1,6 +1,9 @@
 import os, sys
+import numpy as np
+from tensorflow.keras.preprocessing import image
 
-parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+current_dir = os.path.dirname(os.path.realpath(__file__))
+parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 sys.path.append(os.path.dirname(parent_dir))
 
@@ -21,7 +24,22 @@ evaluation = train_and_evaluate(models)
 print(title + ': End')
 
 display_classification_evaluation(evaluation)
-# display_predictions(models, [[502, 'France', 'Female', 42, 8, 159660.8, 3, 1, 0, 113931.57]])
+
+cat_image = image.load_img(current_dir + '/datasets/cat.jpg', target_size = (64, 64))
+dog_image = image.load_img(current_dir + '/datasets/puppy.jpg', target_size = (64, 64))
+
+gen = image.ImageDataGenerator(rescale = 1. / 255)
+
+iterator = gen.flow(np.array([
+    image.img_to_array(cat_image),
+    image.img_to_array(dog_image),
+]))
+
+display_predictions(
+    models,
+    iterator,
+    False,
+)
 
 print('\nSaving models')
 

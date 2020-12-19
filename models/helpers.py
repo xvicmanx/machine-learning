@@ -1,12 +1,12 @@
 from tabulate import tabulate
 
-def display_predictions(models, samples):
+def display_predictions(models, samples, to_data_frame = True):
     print('\tPredictions')
     prediction_headers = ['Model', 'Prediction']
     prediction_rows = []
 
     for key in models:
-        prediction = models[key].predict(samples)
+        prediction = models[key].predict(samples, to_data_frame)
         prediction_rows.append([key, str(prediction)])
 
     print(tabulate(

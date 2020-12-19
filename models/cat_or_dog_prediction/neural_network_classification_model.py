@@ -53,13 +53,13 @@ class ConvolutionalNeuralNetwork:
 class NeuralNetworkCatOrDogPredictionModel(bm.CatOrDogPredictionModel):
     def __init__(self):
         super().__init__()
-        self.__model = ConvolutionalNeuralNetwork()
+        self._model = ConvolutionalNeuralNetwork()
 
     def _get_model_instance(self):
-        return self.__model
+        return self._model
 
     def _save_model(self, file_path):
-        self.__model.save(file_path)
+        self._model.save(file_path)
 
     def _load_model(self, file_path):
-        return self.__model.load(file_path)
+        return self._model.load(file_path)
