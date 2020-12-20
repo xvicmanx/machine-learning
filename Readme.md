@@ -8,7 +8,7 @@ The purpose of these repository is to solve some machine learning problems for a
 ## GRPC service
 
 ### Compiling
-Move to `grpc_service` directory and run:
+Move to `src/grpc_service` directory and run:
 ```sh
 python -m grpc_tools.protoc -I .  --python_out=. --grpc_python_out=. ./service.proto
 ```
@@ -17,14 +17,14 @@ python -m grpc_tools.protoc -I .  --python_out=. --grpc_python_out=. ./service.p
 
 Run the following command:
 ```sh
-python start_server.py
+python src/start_grpc_server.py
 ```
 
 ### Run client demo
 
 Run the following command:
 ```sh
-python grpc_client.py
+python src/grpc_client.py
 ```
 
 Also using `grpcurl` tool
