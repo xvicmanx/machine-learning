@@ -1,0 +1,3 @@
+export const UPDATE_LOADING_STATE = 'UPDATE_LOADING_STATE';
+export const SET_ERROR = 'SET_ERROR';
+export const SET_RESULT = 'SET_RESULT';

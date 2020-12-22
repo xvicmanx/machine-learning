@@ -25,7 +25,7 @@ CORS(app)
 @use_schema(validators.PredictSalaryInputSchema())
 def predict_salary():    
   response = app.config['SERVICE'].predict_salary(int(request.args.get('years')))
-  return { 'salary': response.salary }
+  return { 'salary': response.salary, 'success': True }
 
 @app.route("/predict-purchase", methods=['GET'])
 @use_schema(validators.PredictPurchaseInputSchema())
@@ -34,7 +34,7 @@ def predict_purchase():
     int(request.args.get('age')),
     int(request.args.get('salary')),
   )
-  return { 'purchase': response.purchase }
+  return { 'purchase': response.purchase, 'success': True }
 
 @app.route("/predict-customer-segment", methods=['GET'])
 @use_schema(validators.PredictCustomerSegmentInputSchema())
@@ -43,12 +43,12 @@ def predict_customer_segment():
     int(request.args.get('anual_income')),
     int(request.args.get('spending_score')),
   )
-  return { 'segment': response.segment }
+  return { 'segment': response.segment, 'success': True }
 
 @app.route("/optimal-campaign-ad", methods=['GET'])
 def get_optimal_campaign_ad():
   response = app.config['SERVICE'].get_optimal_campaign_ad()
-  return { 'ad': response.ad }
+  return { 'ad': response.ad, 'success': True }
 
 @app.route("/predict-review-outcome", methods=['GET'])
 @use_schema(validators.PredictReviewInputSchema())
@@ -56,7 +56,7 @@ def predict_review_outcome():
   response = app.config['SERVICE'].predict_review_outcome(
     request.args.get('review'),
   )
-  return { 'liked': response.liked }
+  return { 'liked': response.liked, 'success': True }
 
 @app.route("/predict-cat-or-dog", methods=['GET'])
 @use_schema(validators.PredictCatOrDogInputSchema())
@@ -64,7 +64,7 @@ def predict_cat_or_dog():
   response = app.config['SERVICE'].predict_cat_or_dog(
     request.args.get('img'),
   )
-  return { 'dog': response.dog }
+  return { 'dog': response.dog, 'success': True }
 
 @app.route("/predict-bank-leaving", methods=['GET'])
 @use_schema(validators.PredictBankLeavingInputSchema())
@@ -92,7 +92,7 @@ def predict_bank_leaving():
     is_active_member = is_active_member,
     estimated_salary = estimated_salary,
   )
-  return { 'leaving': response.exited }
+  return { 'leaving': response.exited, 'success': True }
 
 if __name__ == "__main__":
   print('Start server')
