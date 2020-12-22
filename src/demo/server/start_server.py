@@ -4,6 +4,7 @@ import json
 import grpc
 import os, sys
 from service import Service
+from helpers import use_schema
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -14,23 +15,20 @@ sys.path.append(os.path.dirname(parent_dir))
 
 from grpc_service import service_pb2_grpc as srv_grpc
 
+import validators
+
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/", methods=['POST'])
-def test():
-  return "Worked"
-
-@app.route("/up", methods=['GET'])
-def up():
-  return "I am up"
 
 @app.route("/predict-salary", methods=['GET'])
-def predict_salary():
+@use_schema(validators.PredictSalaryInputSchema())
+def predict_salary():    
   response = app.config['SERVICE'].predict_salary(int(request.args.get('years')))
   return { 'salary': response.salary }
 
 @app.route("/predict-purchase", methods=['GET'])
+@use_schema(validators.PredictPurchaseInputSchema())
 def predict_purchase():
   response = app.config['SERVICE'].predict_purchase(
     int(request.args.get('age')),
@@ -38,9 +36,63 @@ def predict_purchase():
   )
   return { 'purchase': response.purchase }
 
-def create_app(service):
-  app.config['SERVICE'] = service
-  return app
+@app.route("/predict-customer-segment", methods=['GET'])
+@use_schema(validators.PredictCustomerSegmentInputSchema())
+def predict_customer_segment():
+  response = app.config['SERVICE'].predict_customer_segment(
+    int(request.args.get('anual_income')),
+    int(request.args.get('spending_score')),
+  )
+  return { 'segment': response.segment }
+
+@app.route("/optimal-campaign-ad", methods=['GET'])
+def get_optimal_campaign_ad():
+  response = app.config['SERVICE'].get_optimal_campaign_ad()
+  return { 'ad': response.ad }
+
+@app.route("/predict-review-outcome", methods=['GET'])
+@use_schema(validators.PredictReviewInputSchema())
+def predict_review_outcome():
+  response = app.config['SERVICE'].predict_review_outcome(
+    request.args.get('review'),
+  )
+  return { 'liked': response.liked }
+
+@app.route("/predict-cat-or-dog", methods=['GET'])
+@use_schema(validators.PredictCatOrDogInputSchema())
+def predict_cat_or_dog():
+  response = app.config['SERVICE'].predict_cat_or_dog(
+    request.args.get('img'),
+  )
+  return { 'dog': response.dog }
+
+@app.route("/predict-bank-leaving", methods=['GET'])
+@use_schema(validators.PredictBankLeavingInputSchema())
+def predict_bank_leaving():
+  credit_score = request.args.get('credit_score')
+  geography = request.args.get('geography')
+  gender = request.args.get('gender')
+  age = request.args.get('age')
+  tenure = request.args.get('tenure')
+  balance = request.args.get('balance')
+  number_of_products = request.args.get('number_of_products')
+  has_credit_card = request.args.get('has_credit_card')
+  is_active_member = request.args.get('is_active_member')
+  estimated_salary = request.args.get('estimated_salary')
+
+  response = app.config['SERVICE'].predict_bank_leaving(
+    credit_score = credit_score,
+    geography = geography,
+    gender = gender,
+    age = age,
+    tenure = tenure,
+    balance = balance,
+    number_of_products = number_of_products,
+    has_credit_card = has_credit_card,
+    is_active_member = is_active_member,
+    estimated_salary = estimated_salary,
+  )
+  return { 'leaving': response.exited }
 
 if __name__ == "__main__":
   print('Start server')
@@ -48,8 +100,8 @@ if __name__ == "__main__":
   with grpc.insecure_channel('localhost:50051') as channel:
     client = srv_grpc.MachineLearningStub(channel)
     service = Service(client)
-    created_app = create_app(service)
-    created_app.run(
+    app.config['SERVICE'] = service
+    app.run(
       debug = True,
       port = 3005,
       host = '0.0.0.0',
