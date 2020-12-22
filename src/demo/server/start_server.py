@@ -21,27 +21,29 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/predict-salary", methods=['GET'])
+@app.route("/predict-salary", methods=['POST'])
 @use_schema(validators.PredictSalaryInputSchema())
-def predict_salary():    
-  response = app.config['SERVICE'].predict_salary(int(request.args.get('years')))
+def predict_salary():
+  response = app.config['SERVICE'].predict_salary(int(request.json.get('years')))
   return { 'salary': response.salary, 'success': True }
 
-@app.route("/predict-purchase", methods=['GET'])
+@app.route("/predict-purchase", methods=['POST'])
 @use_schema(validators.PredictPurchaseInputSchema())
 def predict_purchase():
+  args = request.json
   response = app.config['SERVICE'].predict_purchase(
-    int(request.args.get('age')),
-    int(request.args.get('salary')),
+    int(args.get('age')),
+    int(args.get('salary')),
   )
   return { 'purchase': response.purchase, 'success': True }
 
-@app.route("/predict-customer-segment", methods=['GET'])
+@app.route("/predict-customer-segment", methods=['POST'])
 @use_schema(validators.PredictCustomerSegmentInputSchema())
 def predict_customer_segment():
+  args = request.json
   response = app.config['SERVICE'].predict_customer_segment(
-    int(request.args.get('anual_income')),
-    int(request.args.get('spending_score')),
+    int(args.get('anual_income')),
+    int(args.get('spending_score')),
   )
   return { 'segment': response.segment, 'success': True }
 
@@ -50,52 +52,42 @@ def get_optimal_campaign_ad():
   response = app.config['SERVICE'].get_optimal_campaign_ad()
   return { 'ad': response.ad, 'success': True }
 
-@app.route("/predict-review-outcome", methods=['GET'])
+@app.route("/predict-review-outcome", methods=['POST'])
 @use_schema(validators.PredictReviewInputSchema())
 def predict_review_outcome():
   response = app.config['SERVICE'].predict_review_outcome(
-    request.args.get('review'),
+    request.json.get('review'),
   )
   return { 'liked': response.liked, 'success': True }
 
-@app.route("/predict-cat-or-dog", methods=['GET'])
+@app.route("/predict-cat-or-dog", methods=['POST'])
 @use_schema(validators.PredictCatOrDogInputSchema())
 def predict_cat_or_dog():
   response = app.config['SERVICE'].predict_cat_or_dog(
-    request.args.get('img'),
+    request.json.get('img'),
   )
   return { 'dog': response.dog, 'success': True }
 
-@app.route("/predict-bank-leaving", methods=['GET'])
+@app.route("/predict-bank-leaving", methods=['POST'])
 @use_schema(validators.PredictBankLeavingInputSchema())
 def predict_bank_leaving():
-  credit_score = request.args.get('credit_score')
-  geography = request.args.get('geography')
-  gender = request.args.get('gender')
-  age = request.args.get('age')
-  tenure = request.args.get('tenure')
-  balance = request.args.get('balance')
-  number_of_products = request.args.get('number_of_products')
-  has_credit_card = request.args.get('has_credit_card')
-  is_active_member = request.args.get('is_active_member')
-  estimated_salary = request.args.get('estimated_salary')
-
+  args = request.json
   response = app.config['SERVICE'].predict_bank_leaving(
-    credit_score = credit_score,
-    geography = geography,
-    gender = gender,
-    age = age,
-    tenure = tenure,
-    balance = balance,
-    number_of_products = number_of_products,
-    has_credit_card = has_credit_card,
-    is_active_member = is_active_member,
-    estimated_salary = estimated_salary,
+    credit_score = args.get('credit_score'),
+    geography = args.get('geography'),
+    gender = args.get('gender'),
+    age = args.get('age'),
+    tenure = args.get('tenure'),
+    balance = args.get('balance'),
+    number_of_products = args.get('number_of_products'),
+    has_credit_card = args.get('has_credit_card'),
+    is_active_member = args.get('is_active_member'),
+    estimated_salary = args.get('estimated_salary'),
   )
   return { 'leaving': response.exited, 'success': True }
 
 if __name__ == "__main__":
-  print('Start server')
+  print('Server started')
 
   with grpc.insecure_channel('localhost:50051') as channel:
     client = srv_grpc.MachineLearningStub(channel)

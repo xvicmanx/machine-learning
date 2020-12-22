@@ -1,6 +1,6 @@
 from flask import request
 
-def use_schema(schema, part = 'args'):
+def use_schema(schema, part = 'json'):
   def decorator(func):
     def wrapper(*args, **kwargs):
       values = getattr(request, part)
