@@ -5,25 +5,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../core/Layout';
 import { predict } from '../../redux/Actions';
 
-const PredictSalary = () => {
+const PredictReviewOutcome = () => {
   const dispatch = useDispatch()
-  const [years, setYears] = useState(0);
+  const [review, setReview] = useState('');
   const [sent, setSent] = useState(false);
-  const salary = useSelector(state => state.predictSalary.value)
+  const liked = useSelector(state => state.predictReviewOutcome.value)
 
   return (
     <Layout>
       <Heading>
-        Salary prediction based on years of experience
+        Predict restaurant's review outcome (liked or not)
       </Heading>
       <Form.Field>
-        <Form.Label>Years</Form.Label>
+        <Form.Label>Review</Form.Label>
         <Form.Control>
           <Form.Input
-            placeholder="years"
-            value={years}
+            placeholder="review"
+            value={review}
             onChange={(evt) => {
-              setYears(evt.currentTarget.value);
+              setReview(evt.currentTarget.value);
               setSent(false);
             }}
           />
@@ -33,9 +33,9 @@ const PredictSalary = () => {
         color="warning"
         onClick={() => {
           dispatch(predict({
-            name: 'predictSalary',
-            mapResult: (res) => res.salary,
-            payload: { years },
+            name: 'predictReviewOutcome',
+            mapResult: (res) => res.liked,
+            payload: { review },
           }));
           setSent(true);
         }}
@@ -43,13 +43,13 @@ const PredictSalary = () => {
         Send
       </Button>
       <br /> <br />
-      {!!(years && sent) && (
+      {!!(review && sent) && (
         <Message>
           <Message.Header>
-            Predicted salary
+            Liked?
           </Message.Header>
           <Message.Body>
-            {salary}
+            {liked ? 'Yes' : 'No'}
           </Message.Body>
         </Message>
       )}
@@ -57,4 +57,4 @@ const PredictSalary = () => {
   );
 };
 
-export default PredictSalary;
+export default PredictReviewOutcome;

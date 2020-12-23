@@ -32,11 +32,6 @@ const Layout = ({ children }) => (
             </Link>
           </li>
           <li className="Links__item">
-            <Link to="/get-optimal-campaign-ad">
-              Get Optimal Campaign Ad
-            </Link>
-          </li>
-          <li className="Links__item">
             <Link to="/predict-review-outcome">
               Predict Review Outcome
             </Link>

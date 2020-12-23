@@ -19,9 +19,6 @@ const APIService = {
       spending_score: score,
     },
   }),
-  getOptimalCampaignAd: () => requester({
-    path: '/optimal-campaign-ad',
-  }),
   predictReviewOutcome: ({ review }) => requester({
     path: '/predict-review-outcome',
     method: 'POST',

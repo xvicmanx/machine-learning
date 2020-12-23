@@ -5,25 +5,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../core/Layout';
 import { predict } from '../../redux/Actions';
 
-const PredictSalary = () => {
+const PredictCatOrDog = () => {
   const dispatch = useDispatch()
-  const [years, setYears] = useState(0);
+  const [img, setImg] = useState('');
   const [sent, setSent] = useState(false);
-  const salary = useSelector(state => state.predictSalary.value)
+  const isDog = useSelector(state => state.predictCatOrDog.value)
 
   return (
     <Layout>
       <Heading>
-        Salary prediction based on years of experience
+        Predicts whether a given picture is a cat or dog
       </Heading>
       <Form.Field>
-        <Form.Label>Years</Form.Label>
+        <Form.Label>Picture</Form.Label>
         <Form.Control>
           <Form.Input
-            placeholder="years"
-            value={years}
+            placeholder="img"
+            value={img}
             onChange={(evt) => {
-              setYears(evt.currentTarget.value);
+              setImg(evt.currentTarget.value);
               setSent(false);
             }}
           />
@@ -33,9 +33,9 @@ const PredictSalary = () => {
         color="warning"
         onClick={() => {
           dispatch(predict({
-            name: 'predictSalary',
-            mapResult: (res) => res.salary,
-            payload: { years },
+            name: 'predictCatOrDog',
+            mapResult: (res) => res.dog,
+            payload: { img },
           }));
           setSent(true);
         }}
@@ -43,13 +43,13 @@ const PredictSalary = () => {
         Send
       </Button>
       <br /> <br />
-      {!!(years && sent) && (
+      {!!(img && sent) && (
         <Message>
           <Message.Header>
-            Predicted salary
+            Is a dog?
           </Message.Header>
           <Message.Body>
-            {salary}
+            {isDog ? 'Yes' : 'No'}
           </Message.Body>
         </Message>
       )}
@@ -57,4 +57,4 @@ const PredictSalary = () => {
   );
 };
 
-export default PredictSalary;
+export default PredictCatOrDog;

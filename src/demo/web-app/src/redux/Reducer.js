@@ -4,16 +4,22 @@ import {
   SET_RESULT,
 } from './ActionTypes';
 
+const getDefaultValue = (value = 0) => ({
+  value,
+  error: null,
+  loading: false,
+});
+
 export const INITIAL_STATE = {
-  predictSalary: {
-    value: 0,
-    error: null,
-    loading: false,
-  },
+  predictSalary: getDefaultValue(),
+  predictPurchase: getDefaultValue(false),
+  predictCustomerSegment: getDefaultValue(),
+  predictReviewOutcome: getDefaultValue(false),
+  predictBankLeaving: getDefaultValue(false),
+  predictCatOrDog: getDefaultValue(false),
 };
 
 const Reducer = (state = INITIAL_STATE, { type, payload } = {}) => {
-  console.log(state);
   switch (type) {
     case UPDATE_LOADING_STATE:
       return {
