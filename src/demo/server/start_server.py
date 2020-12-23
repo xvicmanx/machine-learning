@@ -3,6 +3,13 @@ from flask_cors import CORS, cross_origin
 import json
 import grpc
 import os, sys
+import re
+from io import BytesIO
+import base64
+from PIL import Image
+from tensorflow.keras.preprocessing import image
+import tensorflow as tf
+
 from service import Service
 from helpers import use_schema
 
@@ -20,6 +27,43 @@ import validators
 app = Flask(__name__)
 CORS(app)
 
+BASE_64_HEADER_REGEXP = r'(data:image/.*;base64,)(.*)'
+
+
+def remove_type_header(image_data):
+  """
+  Removes the type header added by the browser
+  from base64 encoded image data.
+  
+  Args:
+      image_data (str): Encoded image data.
+  
+  Returns:
+      str: the encoded data without the header.
+  """
+  return re.sub(
+    BASE_64_HEADER_REGEXP,
+    r'\2',
+    image_data
+  )
+
+def base64_to_image_array(data):
+  """Converts a base4 encoded image
+  to an image array.
+  
+  Args:
+      data (string): base64 encoded image.
+  
+  Returns:
+      array: decoded image.
+  """
+  return Image.open(BytesIO(base64.b64decode(data)))
+
+
+def load_decoded_img(base_64_img):
+  img = base64_to_image_array(remove_type_header(base_64_img))
+  img = tf.image.encode_jpeg(image.img_to_array(img))
+  return tf.io.encode_base64(img)
 
 @app.route("/predict-salary", methods=['POST'])
 @use_schema(validators.PredictSalaryInputSchema())
@@ -63,9 +107,8 @@ def predict_review_outcome():
 @app.route("/predict-cat-or-dog", methods=['POST'])
 @use_schema(validators.PredictCatOrDogInputSchema())
 def predict_cat_or_dog():
-  response = app.config['SERVICE'].predict_cat_or_dog(
-    request.json.get('img'),
-  )
+  img = load_decoded_img(request.json.get('img'))
+  response = app.config['SERVICE'].predict_cat_or_dog(img.numpy())
   return { 'dog': response.dog, 'success': True }
 
 @app.route("/predict-bank-leaving", methods=['POST'])

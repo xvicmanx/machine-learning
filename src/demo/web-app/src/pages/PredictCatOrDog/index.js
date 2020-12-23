@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Heading, Message } from 'react-bulma-components';
 import { useDispatch, useSelector } from 'react-redux'
+import ImageInput from '../../core/ImageInput';
 
 import Layout from '../../core/Layout';
 import { predict } from '../../redux/Actions';
@@ -19,11 +20,12 @@ const PredictCatOrDog = () => {
       <Form.Field>
         <Form.Label>Picture</Form.Label>
         <Form.Control>
-          <Form.Input
-            placeholder="img"
-            value={img}
-            onChange={(evt) => {
-              setImg(evt.currentTarget.value);
+          <ImageInput
+            name="img"
+            placeholder="Image"
+            previewWidth="100px"
+            onChange={(name, image) => {
+              setImg(image);
               setSent(false);
             }}
           />

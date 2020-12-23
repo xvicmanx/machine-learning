@@ -56,6 +56,8 @@ class MachineLearningServicer(BaseServicer):
        return srv.PredictReviewOutcomeResponse(liked = bool(predictions[0]))
 
     def PredictCatOrDog(self, request, context):
+       print('PredictCatOrDog')
+       print('PredictCatOrDog', request.img)
        gen = image.ImageDataGenerator(rescale = 1. / 255)
        img = preprocess_and_decode(request.img)
        img = image.img_to_array(img)
