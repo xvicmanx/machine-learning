@@ -10,7 +10,7 @@ const PredictCatOrDog = () => {
   const dispatch = useDispatch()
   const [img, setImg] = useState('');
   const [sent, setSent] = useState(false);
-  const isDog = useSelector(state => state.predictCatOrDog.value)
+  const result = useSelector(state => state.predictCatOrDog)
 
   return (
     <Layout>
@@ -45,13 +45,13 @@ const PredictCatOrDog = () => {
         Send
       </Button>
       <br /> <br />
-      {!!(img && sent) && (
+      {!!(img && sent) && !result.loading && (
         <Message>
           <Message.Header>
             Is a dog?
           </Message.Header>
           <Message.Body>
-            {isDog ? 'Yes' : 'No'}
+            {result.value ? 'Yes' : 'No'}
           </Message.Body>
         </Message>
       )}
