@@ -1,17 +1,15 @@
 from flask import request, Flask
 from flask_cors import CORS, cross_origin
-import json
 import grpc
-import os, sys
-import re
+import base64, os, sys, re, json
 from io import BytesIO
-import base64
 from PIL import Image
 from tensorflow.keras.preprocessing import image
 import tensorflow as tf
 
 from service import Service
 from helpers import use_schema
+import validators
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -21,8 +19,6 @@ sys.path.append(parent_dir)
 sys.path.append(os.path.dirname(parent_dir))
 
 from grpc_service import service_pb2_grpc as srv_grpc
-
-import validators
 
 app = Flask(__name__)
 CORS(app)

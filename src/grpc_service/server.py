@@ -5,9 +5,9 @@ import tensorflow as tf
 import numpy as np
 import base64
 from tensorflow.keras.preprocessing import image
-
 from service_pb2_grpc import MachineLearningServicer as BaseServicer
 import service_pb2 as srv
+
 
 def preprocess_and_decode(img_str):
     img = tf.io.decode_base64(img_str)
@@ -56,12 +56,9 @@ class MachineLearningServicer(BaseServicer):
        return srv.PredictReviewOutcomeResponse(liked = bool(predictions[0]))
 
     def PredictCatOrDog(self, request, context):
-       print('PredictCatOrDog')
-       print('PredictCatOrDog', request.img)
        gen = image.ImageDataGenerator(rescale = 1. / 255)
        img = preprocess_and_decode(request.img)
-       img = image.img_to_array(img)
-       iterator = gen.flow(np.array([img]))
+       iterator = gen.flow(np.array([image.img_to_array(img)]))
        predictions = self.__cat_or_dog_prediction_model.predict(iterator, False)
        return srv.PredictCatOrDogResponse(dog = bool(predictions[0]))
 

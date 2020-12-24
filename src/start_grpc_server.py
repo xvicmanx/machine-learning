@@ -17,6 +17,7 @@ from models.cat_or_dog_prediction.neural_network_classification_model import Neu
 
 def serve():
     print('START')
+
     predict_salary_model = LinearRegressionSalaryPredictionModel()
     predict_salary_model.load()
 
@@ -59,7 +60,9 @@ def serve():
   
     server.add_insecure_port('[::]:50051')
     server.start()
+
     print('END')
+
     server.wait_for_termination()
 
 
