@@ -1,18 +1,9 @@
 """Machine learning Servicer"""
 
 from concurrent import futures
-import tensorflow as tf
-import numpy as np
-import base64
-from tensorflow.keras.preprocessing import image
 from service_pb2_grpc import MachineLearningServicer as BaseServicer
 import service_pb2 as srv
-
-
-def preprocess_and_decode(img_str):
-    img = tf.io.decode_base64(img_str)
-    img = tf.image.decode_jpeg(img, channels = 3)
-    return tf.image.resize(img, (64, 64))
+from utils import preprocess_and_decode
 
 class MachineLearningServicer(BaseServicer):
     """Provides methods that implement functionality of machine learning server."""
@@ -56,10 +47,8 @@ class MachineLearningServicer(BaseServicer):
        return srv.PredictReviewOutcomeResponse(liked = bool(predictions[0]))
 
     def PredictCatOrDog(self, request, context):
-       gen = image.ImageDataGenerator(rescale = 1. / 255)
        img = preprocess_and_decode(request.img)
-       iterator = gen.flow(np.array([image.img_to_array(img)]))
-       predictions = self.__cat_or_dog_prediction_model.predict(iterator, False)
+       predictions = self.__cat_or_dog_prediction_model.predict(img, False)
        return srv.PredictCatOrDogResponse(dog = bool(predictions[0]))
 
 
