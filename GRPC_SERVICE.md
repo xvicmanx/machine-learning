@@ -50,6 +50,7 @@ Service that makes predictions using machine learning models.
 | GetOptimalCampaignAdOption | [GetOptimalCampaignAdOptionRequest](#GetOptimalCampaignAdOptionRequest) | [GetOptimalCampaignAdOptionResponse](#GetOptimalCampaignAdOptionResponse) | Gets the optimal campaign ad |
 | PredictReviewOutcome | [PredictReviewOutcomeRequest](#PredictReviewOutcomeRequest) | [PredictReviewOutcomeResponse](#PredictReviewOutcomeResponse) | Predicts whether a review correspond to a like or dislike |
 | PredictBankLeaving | [PredictBankLeavingRequest](#PredictBankLeavingRequest) | [PredictBankLeavingResponse](#PredictBankLeavingResponse) | Predicts whether a customer will leaving a banking institution or not |
+| PredictCatOrDog | [PredictCatOrDogRequest](#PredictCatOrDogRequest) | [PredictCatOrDogResponse](#PredictCatOrDogResponse) | Predicts whether a given image corresponds to a cat or dog |
 
 <a name="PredictSalaryRequest"></a>
 
@@ -178,6 +179,25 @@ Empty
 | ----- | ---- | ----- | ----------- |
 | exited | bool | | Whether the user is leaving or not |
 
+
+<a name="PredictCatOrDogRequest"></a>
+
+### Predict Cat Or Dog Request
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| img | string | required | Base 64 image |
+
+
+<a name="PredictCatOrDogResponse"></a>
+
+### Predict Cat Or Dog Response
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| dog | bool | | Whether the image is a dog or not |
 
 
 
