@@ -8,3 +8,7 @@ The purpose of these repository is to solve some machine learning problems for a
 ## GRPC service
 
 Go to [GRPC Service](GRPC_SERVICE.md) for more information.
+
+## Contributing
+
+Feel free to give any suggestion.
