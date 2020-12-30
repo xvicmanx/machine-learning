@@ -12,10 +12,12 @@ class SOMModel:
     __dataset_file_path = dirname + '/' + 'dataset.csv'
     _persisted_models_dirname = 'persisted_models_data/k_means'
 
-    def __init__(self, size = 3):
+    def __init__(self, size = 3, sigma = 0.5,  learning_rate = 0.5):
         self.__size = size
         base = dirname + '/' + self._persisted_models_dirname + '/' + decamelize.convert(self.__class__.__name__)
         self.__model_file_path = base + "_serialized.sav"
+        self.__sigma = sigma
+        self.__learning_rate = learning_rate
 
     def train(self):
         """Trains the model by reading the data from file, preprocessing and training the model
@@ -47,8 +49,8 @@ class SOMModel:
             self.__size,
             self.__size,
             17,
-            sigma = 0.5,
-            learning_rate = 0.5,
+            sigma = self.__sigma,
+            learning_rate = self.__learning_rate,
         )
 
     def _save_object(self, obj, file_path):
