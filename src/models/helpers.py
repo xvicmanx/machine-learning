@@ -1,4 +1,6 @@
 from tabulate import tabulate
+import tensorflow as tf
+from tensorflow.keras.preprocessing import image
 
 def display_predictions(models, samples, to_data_frame = True):
     print('\tPredictions')
@@ -55,3 +57,8 @@ def train_and_evaluate(models):
         evaluation[key] = models[key].train()
     
     return evaluation
+
+def load_decoded_img(directory, name):
+    img = image.load_img(directory + name)
+    img = tf.image.encode_jpeg(image.img_to_array(img))
+    return tf.io.encode_base64(img)

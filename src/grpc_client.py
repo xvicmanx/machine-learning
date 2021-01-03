@@ -4,13 +4,10 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 
 from grpc_service import service_pb2 as srv, service_pb2_grpc
+from helpers import load_decoded_img
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
-
-def load_decoded_img(name):
-    img = image.load_img(current_dir + '/models/cat_or_dog_prediction/datasets/' + name)
-    img = tf.image.encode_jpeg(image.img_to_array(img))
-    return tf.io.encode_base64(img)
+images_dir = current_dir + '/models/cat_or_dog_prediction/datasets/'
 
 
 def run():
@@ -35,8 +32,8 @@ def run():
             estimated_salary = 113931.57,
         ))
 
-        first_img = load_decoded_img('cat-rsz.jpg')
-        second_img = load_decoded_img('puppy-rsz.jpg')
+        first_img = load_decoded_img(images_dir, 'cat-rsz.jpg')
+        second_img = load_decoded_img(images_dir, 'puppy-rsz.jpg')
         first_cat_or_dog_response = client.PredictCatOrDog(srv.PredictCatOrDogRequest(img = first_img.numpy()))
         second_cat_or_dog_response = client.PredictCatOrDog(srv.PredictCatOrDogRequest(img = second_img.numpy()))
 
