@@ -40,15 +40,15 @@ def display_classification_evaluation(evaluation):
 def display_regression_evaluation(evaluation):
     print('\tTraining evaluation results')
 
-    headers = ['Model', 'R2 score']
+    headers = ['Model', 'R2 score', 'MSE', 'MAE']
     rows = []
 
     for key in evaluation:
-        rows.append([key, evaluation[key]['r2_score']])
+        rows.append([key, evaluation[key]['r2_score'], evaluation[key]['mse'], evaluation[key]['mae']])
 
     print(tabulate(
         rows,
-        headers=headers
+        headers = headers
     ))
 
 def train_and_evaluate(models):

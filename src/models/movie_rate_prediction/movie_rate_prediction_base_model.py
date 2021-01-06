@@ -4,12 +4,12 @@ import pandas as pd
 import numpy as np
 
 
-from core.classification_model import ClassificationModel
+from core.regression_model import RegressionModel
 
 dirname = os.path.dirname(__file__)
 persisted_models_dirname = 'persisted_models_data'
 
-class MovieRatePredictionModel(ClassificationModel):
+class MovieRatePredictionModel(RegressionModel):
     def __init__(self):
         super().__init__()
 
@@ -29,11 +29,6 @@ class MovieRatePredictionModel(ClassificationModel):
         self._save_model(self.__model_file_path)
 
     def _split_data(self):
-        # dat_base = dirname + '/datasets/ml-1m/'
-        # movies = self.__read_dat_file(dat_base + 'movies.dat')
-        # users = self.__read_dat_file(dat_base + 'users.dat')
-        # ratings = self.__read_dat_file(dat_base + 'ratings.dat')
-
         dataset_base = dirname + '/datasets/ml-100k/'
         training_set = self.__read_dataset(dataset_base + 'u1.base')
         test_set = self.__read_dataset(dataset_base + 'u1.test')
